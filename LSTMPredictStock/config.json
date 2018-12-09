@@ -1,0 +1,54 @@
+{
+	"data": {
+		"filename": "drjt_600718_stock.csv",
+		"columns": [
+			"Close","Open","High","Low"
+		],
+		"sequence_length": 30,
+		"train_test_split": 0.85,
+		"normalise": true
+	},
+	"training": {
+		"epochs": 1,
+		"batch_size": 8
+	},
+	"model": {
+		"loss": "mse",
+		"optimizer": "adam",
+		"save_dir": "saved_models",
+		"layers": [
+			{
+				"type": "lstm",
+				"neurons": 100,
+				"input_timesteps": 29,
+				"input_dim": 4,
+				"return_seq": true
+			},
+			{
+				"type": "dropout",
+				"rate": 0.2
+			},
+			{
+				"type": "lstm",
+				"neurons": 100,
+				"return_seq": true
+			},
+			{
+				"type": "lstm",
+				"neurons": 100,
+				"return_seq": false
+			},
+			{
+				"type": "dropout",
+				"rate": 0.2
+			},
+			{
+				"type": "dense",
+				"neurons": 1,
+				"activation": "linear"
+			}
+		]
+	},
+    "companies":{"600718":"drjt","000651":"gldq","600839":"scch","600320":"zhzg","601988":"zgyh",
+                 "000066": "zgcc","601766":"zgzc","601390":"zgzt","000768":"zhfj","000063":"zxtx"}
+}
