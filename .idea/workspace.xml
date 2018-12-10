@@ -51,10 +51,9 @@
         <entry file="file://$PROJECT_DIR$/stock_predict/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
-              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+              <caret line="9" column="66" selection-start-line="9" selection-start-column="66" selection-end-line="9" selection-end-column="66" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <marker date="1544433735237" expanded="true" signature="237:241" ph="..." />
               </folding>
             </state>
           </provider>
@@ -63,13 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LSTMPredictStock/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="176" column="41" lean-forward="true" selection-start-line="176" selection-start-column="41" selection-end-line="176" selection-end-column="41" />
-              <folding>
-                <marker date="1544435053049" expanded="true" signature="5538:6003" ph="..." />
-                <marker date="1544435053049" expanded="true" signature="7603:7695" ph="..." />
-                <marker date="1544435053049" expanded="true" signature="7733:7773" ph="..." />
-              </folding>
+            <state relative-caret-position="481">
+              <caret line="186" column="41" selection-start-line="186" selection-start-column="41" selection-end-line="186" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -78,7 +72,7 @@
         <entry file="file://$PROJECT_DIR$/LSTMPredictStock/core/get_domestic_hist_stock.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="46" column="51" lean-forward="true" selection-start-line="43" selection-start-column="4" selection-end-line="46" selection-end-column="51" />
+              <caret line="46" column="51" selection-start-line="43" selection-start-column="4" selection-end-line="46" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -333,29 +327,23 @@
     <entry file="file://$PROJECT_DIR$/LSTMPredictStock/core/get_domestic_hist_stock.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="46" column="51" lean-forward="true" selection-start-line="43" selection-start-column="4" selection-end-line="46" selection-end-column="51" />
+          <caret line="46" column="51" selection-start-line="43" selection-start-column="4" selection-end-line="46" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LSTMPredictStock/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="176" column="41" lean-forward="true" selection-start-line="176" selection-start-column="41" selection-end-line="176" selection-end-column="41" />
-          <folding>
-            <marker date="1544435053049" expanded="true" signature="5538:6003" ph="..." />
-            <marker date="1544435053049" expanded="true" signature="7603:7695" ph="..." />
-            <marker date="1544435053049" expanded="true" signature="7733:7773" ph="..." />
-          </folding>
+        <state relative-caret-position="481">
+          <caret line="186" column="41" selection-start-line="186" selection-start-column="41" selection-end-line="186" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stock_predict/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <caret line="9" column="66" selection-start-line="9" selection-start-column="66" selection-end-line="9" selection-end-column="66" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <marker date="1544433735237" expanded="true" signature="237:241" ph="..." />
           </folding>
         </state>
       </provider>
