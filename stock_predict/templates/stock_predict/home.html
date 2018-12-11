@@ -4,29 +4,45 @@
     <meta charset="UTF-8">
     <title>股票预测系统</title>
     {% load static %}
-    <script src="{%  static 'stock_predict/js/echarts.js' %}"></script>
+    <script src="{% static 'stock_predict/js/echarts.js' %}"></script>
 </head>
 <body>
-    <center>
+<script type="text/javascript">
+        var stock_data = null
+        {% if data %}
+            stock_data = {{data|safe}};
+            var recent_data = stock_data['recent_data'];
+            var stock_code = stock_data['stock_code'];
+            var predict_data = stock_data['predict_data'];
+        {% endif %}
+        console.log(stock_data);
+</script>
+<center>
     <h1>股票预测系统</h1>
-	<div style="position:center;margin-top: 50px">
-		<form action="{% url 'stock_predict:predict' %}" method="post">
+    <div style="position:center;margin-top: 50px">
+        <form id="commit_stock_code" action="{% url 'stock_predict:predict' %}" method="post">
             {% csrf_token %}
-			<select name="stock_code" style="width: 200px; text-align: center;">
-			  <option value="600718">东软集团(600718)</option>
-			  <option value="000651">格力电器(000651)</option>
-			  <option value="600839">四川长虹(600839)</option>
-			  <option value="600320">振华重工(600320)</option>
-			  <option value="601988">中国银行(601988)</option>
-			  <option value="000066">中国长城(000066)</option>
-			  <option value="601766">中国中车(601766)</option>
-			  <option value="601390">中国中铁(601390)</option>
-			  <option value="000768">中航飞机(000768)</option>
-			  <option value="000063">中兴通讯(000063)</option>
-			</select>
-			<input type="submit" value="查询">
-		</form>
-	</div>
-    </center>
+            <select name="stock_code" style="width: 200px; text-align: center;">
+                <option value="600718">东软集团(600718)</option>
+                <option value="000651">格力电器(000651)</option>
+                <option value="600839">四川长虹(600839)</option>
+                <option value="600320">振华重工(600320)</option>
+                <option value="601988">中国银行(601988)</option>
+                <option value="000066">中国长城(000066)</option>
+                <option value="601766">中国中车(601766)</option>
+                <option value="601390">中国中铁(601390)</option>
+                <option value="000768">中航飞机(000768)</option>
+                <option value="000063">中兴通讯(000063)</option>
+            </select>
+            <input type="submit" value="查询">
+        </form>
+    </div>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div style="width:100%;height:400px;margin:50px;">
+        <div id="history" style="float:left;width: 50%;height:400px;"></div>
+        <div id="future" style="float:left;width: 50%;;height:400px;"></div>
+    </div>
+</center>
+<script src="{% static 'stock_predict/js/draw_charts.js' %}"></script>
 </body>
 </html>

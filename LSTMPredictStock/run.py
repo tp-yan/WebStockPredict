@@ -1,3 +1,5 @@
+import keras
+
 __author__ = "Jakob Aungiers"
 __copyright__ = "Jakob Aungiers 2018"
 __version__ = "2.0.0"
@@ -115,6 +117,7 @@ def prediction(stock_code, real=True, pre_len=30, plot=False):
 
     file_path = os.path.join(get_parent_dir(),os.path.join("saved_models",stock_code + ".h5"))
     model = Model()
+    keras.backend.clear_session()
     model.load_model(file_path)  # 根据配置文件新建模型
 
     # predict_length = configs['data']['sequence_length']   # 预测长度
@@ -210,7 +213,7 @@ def get_hist_data(stock_code, recent_day=30):  # 获取某股票，指定天数�
     cols = ['Date', 'Close']
     data_frame = pd.read_csv(file_path)
     close_data = data_frame.get(cols).values[-recent_day:]
-    return close_data
+    return close_data.tolist()
 
 
 def train_all_stock():
