@@ -22,25 +22,25 @@
     <div style="position:center;margin-top: 50px">
         <form id="commit_stock_code" action="{% url 'stock_predict:predict' %}" method="post">
             {% csrf_token %}
-            <select name="stock_code" style="width: 200px; text-align: center;">
-                <option value="600718">东软集团(600718)</option>
-                <option value="000651">格力电器(000651)</option>
-                <option value="600839">四川长虹(600839)</option>
-                <option value="600320">振华重工(600320)</option>
-                <option value="601988">中国银行(601988)</option>
-                <option value="000066">中国长城(000066)</option>
-                <option value="601766">中国中车(601766)</option>
-                <option value="601390">中国中铁(601390)</option>
-                <option value="000768">中航飞机(000768)</option>
-                <option value="000063">中兴通讯(000063)</option>
+            <select name="stock_code" style="width: 200px; text-align: center; padding:5px;">
+                <option id="600718" value="600718">东软集团(600718)</option>
+                <option id="000651" value="000651">格力电器(000651)</option>
+                <option id="600839" value="600839">四川长虹(600839)</option>
+                <option id="600320" value="600320">振华重工(600320)</option>
+                <option id="601988" value="601988">中国银行(601988)</option>
+                <option id="000066" value="000066">中国长城(000066)</option>
+                <option id="601766" value="601766">中国中车(601766)</option>
+                <option id="601390" value="601390">中国中铁(601390)</option>
+                <option id="000768" value="000768">中航飞机(000768)</option>
+                <option id="000063" value="000063">中兴通讯(000063)</option>
             </select>
-            <input type="submit" value="查询">
+            <input type="submit" value="查询" style="padding:5px;">
         </form>
     </div>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div style="width:100%;height:400px;margin-top:50px;">
-        <div id="history" style="float:left;width: 60%;height:400px;"></div>
-        <div id="future" style="float:left;width: 40%;;height:400px;"></div>
+        <div id="history" style="float:left;width: 60%;height:450px;"></div>
+        <div id="future" style="float:left;width: 40%;;height:450px;"></div>
     </div>
 </center>
 <script src="{% static 'stock_predict/js/draw_charts.js' %}"></script>

@@ -3,16 +3,17 @@ import json
 from django.http import HttpResponse
 from django.shortcuts import render
 from LSTMPredictStock import run
-from . import models
+from stock_predict import models
+from datetime import datetime as dt
 # Create your views here.
 
 def get_hist_predict_data(stock_code):
-    recent_data = predict_data = None
+    recent_data,predict_data = None,None
+
     company = models.Company.objects.get(stock_code=stock_code)
 
-    recent_data = run.get_hist_data(stock_code)
+    # recent_data = run.get_hist_data(stock_code)
 
-    '''
     if company.historydata_set.count() <= 0:
         history_data = models.HistoryData()
         history_data.company = company
@@ -22,9 +23,14 @@ def get_hist_predict_data(stock_code):
     else:
         all_data = company.historydata_set.all()
         for single in all_data:
+            now = dt.now()
+            start_date = dt.strptime(single.start_date,"%Y-%m-%d")
+            if now.date() > start_date.date():  # 更新预测数据
+                single.set_data(run.get_hist_data(stock_code))
+                single.save()
+
             recent_data = single.get_data()
             break
-    '''
 
     if company.predictdata_set.count() <= 0:
         predict_data = models.PredictData()
@@ -35,6 +41,12 @@ def get_hist_predict_data(stock_code):
     else:
         all_data = company.predictdata_set.all()
         for single in all_data:
+            now = dt.now()
+            start_date = dt.strptime(single.start_date,"%Y-%m-%d")
+            if now.date() > start_date.date():  # 更新预测数据
+                single.set_data(run.prediction(stock_code, pre_len=10))
+                single.save()
+
             predict_data = single.get_data()
             break
 

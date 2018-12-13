@@ -11,7 +11,7 @@ class Company(models.Model):
 class HistoryData(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     data = models.TextField() # 字符串类型
-    start_date = models.DateField()
+    start_date = models.CharField(max_length=30)
 
     def set_data(self,list_data):   # 将list类型数据，转为字符串存储
         self.start_date = list_data[0][0]   # 记录第一条数据的日期
@@ -23,7 +23,7 @@ class HistoryData(models.Model):
 class PredictData(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     data = models.TextField()  # 字符串类型
-    start_date = models.DateField()
+    start_date = models.CharField(max_length=30)
 
     def set_data(self, list_data):  # 将list类型数据，转为字符串存储
         self.start_date = list_data[0][0]  # 记录第一条数据的日期
