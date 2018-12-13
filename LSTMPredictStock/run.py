@@ -46,16 +46,16 @@ def train_model(stock_code, predict=False):  # 训练指定股票代码的模型
     训练并保存模型，同时根据测试数据对模型进行评估（绘图方式）
     '''
 
-    configs = json.load(open('config.json', 'r'))
-    if not os.path.exists(configs['model']['save_dir']):
-        os.makedirs(configs['model']['save_dir'])  # 创建保存模型的目录
+    configs = json.load(open(get_config_path(), 'r'))
+    if not os.path.exists(os.path.join(get_parent_dir(),configs['model']['save_dir'])):
+        os.makedirs(os.path.join(get_parent_dir(),configs['model']['save_dir']))  # 创建保存模型的目录
 
     split = configs['data']['train_test_split']
     if not predict:
         split = 1  # 若不评估模型准确度，则将全部历史数据用于训练
 
     data = DataLoader(  # 从本地加载训练和测试数据
-        os.path.join('data', stock_code + ".csv"),  # configs['data']['filename']
+        os.path.join(get_parent_dir(),os.path.join('data', stock_code + ".csv")),  # configs['data']['filename']
         split,
         configs['data']['columns']  # 选择某些列的数据进行训练
     )
@@ -86,7 +86,7 @@ def train_model(stock_code, predict=False):  # 训练指定股票代码的模型
         epochs=configs['training']['epochs'],
         batch_size=configs['training']['batch_size'],
         steps_per_epoch=steps_per_epoch,
-        save_dir=configs['model']['save_dir'],
+        save_dir=os.path.join(get_parent_dir(),configs['model']['save_dir']),
         save_name=stock_code
     )
 
@@ -188,7 +188,7 @@ def format_predictions(predictions):    # 给预测数据添加对应日期
     return date_predict
 
 def main(stock_code, train=False, predict=False):
-    configs = json.load(open('config.json', 'r'))
+    configs = json.load(open(get_config_path(), 'r'))
     companies = configs['companies']
 
     if stock_code not in companies.keys():
@@ -218,7 +218,7 @@ def get_hist_data(stock_code, recent_day=30):  # 获取某股票，指定天数�
     return close_data.tolist()
 
 
-def train_all_stock():
+def train_all_stock():  #
     get_all_last_data(start_date="2010-01-01")
     configs = json.load(open(get_config_path(), 'r'))
     companies = configs['companies']

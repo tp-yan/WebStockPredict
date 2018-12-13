@@ -5,6 +5,7 @@ from django.shortcuts import render
 from LSTMPredictStock import run
 from stock_predict import models
 from datetime import datetime as dt
+from apscheduler.scheduler import Scheduler
 # Create your views here.
 
 def get_hist_predict_data(stock_code):
@@ -64,3 +65,17 @@ def predict_stock_action(request):
     recent_data, predict_data = get_hist_predict_data(stock_code)
     data = {"recent_data": recent_data, "stock_code": stock_code, "predict_data": predict_data}
     return render(request, "stock_predict/home.html", {"data": json.dumps(data)})  # json.dumps(list)
+
+
+sched = Scheduler()
+
+# 定时任务
+# @sched.interval_schedule(seconds=2)   # 每2s执行一次
+# def test_scheduler():
+#     print("调度")
+
+@sched.cron_schedule(hour=0,minute=0)   # 每日凌晨调度一次
+def train_models():
+    run.train_all_stock()
+
+sched.start()
