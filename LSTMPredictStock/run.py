@@ -15,6 +15,7 @@ from .core.data_processor import DataLoader
 from .core.model import Model
 from datetime import datetime,timedelta
 from .core.get_domestic_hist_stock import get_all_last_data
+from .core.get_domestic_hist_stock import get_single_last_data
 
 
 def plot_results(predicted_data, true_data):  # predicted_data与true_data：同长度一维数组
@@ -208,6 +209,7 @@ def main(stock_code, train=False, predict=False):
 
     # 二维数组：[[data,value],[...]]
 def get_hist_data(stock_code, recent_day=30):  # 获取某股票，指定天数的历史close数据,包含日期
+    get_single_last_data(stock_code)
     root_dir = get_parent_dir()
     file_path = os.path.join(root_dir, "data/" + stock_code + ".csv")
     cols = ['Date', 'Close']
