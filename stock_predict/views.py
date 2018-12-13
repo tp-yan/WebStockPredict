@@ -10,6 +10,9 @@ def get_hist_predict_data(stock_code):
     recent_data = predict_data = None
     company = models.Company.objects.get(stock_code=stock_code)
 
+    recent_data = run.get_hist_data(stock_code)
+
+    '''
     if company.historydata_set.count() <= 0:
         history_data = models.HistoryData()
         history_data.company = company
@@ -21,6 +24,7 @@ def get_hist_predict_data(stock_code):
         for single in all_data:
             recent_data = single.get_data()
             break
+    '''
 
     if company.predictdata_set.count() <= 0:
         predict_data = models.PredictData()
