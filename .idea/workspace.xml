@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e1ca83e-e4e6-4a41-8779-c36629260403" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTMPredictStock/data/000063.csv" beforeDir="false" afterPath="$PROJECT_DIR$/LSTMPredictStock/data/000063.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTMPredictStock/data/000066.csv" beforeDir="false" afterPath="$PROJECT_DIR$/LSTMPredictStock/data/000066.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTMPredictStock/data/000651.csv" beforeDir="false" afterPath="$PROJECT_DIR$/LSTMPredictStock/data/000651.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTMPredictStock/data/000768.csv" beforeDir="false" afterPath="$PROJECT_DIR$/LSTMPredictStock/data/000768.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTMPredictStock/data/600320.csv" beforeDir="false" afterPath="$PROJECT_DIR$/LSTMPredictStock/data/600320.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTMPredictStock/data/600839.csv" beforeDir="false" afterPath="$PROJECT_DIR$/LSTMPredictStock/data/600839.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTMPredictStock/data/601766.csv" beforeDir="false" afterPath="$PROJECT_DIR$/LSTMPredictStock/data/601766.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTMPredictStock/data/601988.csv" beforeDir="false" afterPath="$PROJECT_DIR$/LSTMPredictStock/data/601988.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTMPredictStock/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/LSTMPredictStock/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_predict/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_predict/static/stock_predict/js/draw_charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/static/stock_predict/js/draw_charts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_predict/templates/stock_predict/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/templates/stock_predict/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_predict/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -56,6 +43,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="480" />
+          <entry key="gitignore" value="12" />
           <entry key="html" value="781" />
           <entry key="js" value="1099" />
           <entry key="py" value="2693" />
@@ -65,6 +53,7 @@
         <counts>
           <entry key="HTML" value="781" />
           <entry key="JavaScript" value="1099" />
+          <entry key="PLAIN_TEXT" value="12" />
           <entry key="Python" value="3173" />
         </counts>
       </usages-collector>
@@ -75,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stock_predict/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+            <state relative-caret-position="759">
+              <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -87,14 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stock_predict/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-                <marker date="1544684152535" expanded="true" signature="99:104" ph="..." />
-                <marker date="1544684152535" expanded="true" signature="226:227" ph="..." />
-                <marker date="1544684152535" expanded="true" signature="683:684" ph="..." />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
             </state>
           </provider>
         </entry>
@@ -102,13 +85,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LSTMPredictStock/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="211" column="19" selection-start-line="211" selection-start-column="19" selection-end-line="211" selection-end-column="19" />
+            <state relative-caret-position="130">
+              <caret line="212" column="19" selection-start-line="212" selection-start-column="19" selection-end-line="212" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stock_predict/templates/stock_predict/home.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -116,10 +99,22 @@
               <folding>
                 <element signature="n#style#0;n#div#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stock_predict/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -160,6 +155,7 @@
         <option value="$PROJECT_DIR$/stock_predict/static/stock_predict/js/draw_charts.js" />
         <option value="$PROJECT_DIR$/stock_predict/views.py" />
         <option value="$PROJECT_DIR$/stock_predict/templates/stock_predict/home.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -374,8 +370,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        <state relative-caret-position="17">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -428,9 +424,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-          <folding>
-            <marker date="1544585129892" expanded="true" signature="52:412" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -453,8 +446,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stock_predict/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+        <state relative-caret-position="759">
+          <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -463,8 +456,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LSTMPredictStock/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="211" column="19" selection-start-line="211" selection-start-column="19" selection-end-line="211" selection-end-column="19" />
+        <state relative-caret-position="130">
+          <caret line="212" column="19" selection-start-line="212" selection-start-column="19" selection-end-line="212" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -472,22 +465,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="19" column="65" selection-start-line="19" selection-start-column="65" selection-end-line="19" selection-end-column="65" />
-          <folding>
-            <marker date="1544666157322" expanded="true" signature="1742:1993" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stock_predict/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1544684152535" expanded="true" signature="99:104" ph="..." />
-            <marker date="1544684152535" expanded="true" signature="226:227" ph="..." />
-            <marker date="1544684152535" expanded="true" signature="683:684" ph="..." />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
@@ -498,9 +482,7 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#form#0;n#div#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#form#0;n#div#0;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
