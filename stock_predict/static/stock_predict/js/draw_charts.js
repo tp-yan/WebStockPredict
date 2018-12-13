@@ -5,28 +5,39 @@ var companies = {"600718":"东软集团","000651":"格力电器","600839":"四�
 function draw_chart(m_data,div_id,m_title){
     //初始化echarts实例
     var myChart = echarts.init(document.getElementById(div_id));
+
     // 指定图表的配置项和数据
      var option = {
-       title: {
+        title: {
                 text: companies[stock_code]+"("+stock_code+")" + m_title,
                 textStyle:{
                 //字体大小
         　　　　  fontSize:15
                 }
             },
+        tooltip : {
+                    trigger: 'item'
+                },
         xAxis: {
             type: 'category',
             data: [] // x轴名称
         },
         yAxis: {
             type: 'value',
-            name:'单位：元'
+//            name:'单位：元',
+            axisLabel : {
+                formatter: '{value} 元'
+            }
         },
-        series: [{
-            name:'收盘价',
+        series: [
+            {
+//            name: '价格',
             data: [],   // x坐标对应y值
-            type: 'line'
-        }]
+            type: 'line',
+            // 显示数值
+//            itemStyle: { normal: {label : {show: true}}}
+            },
+        ]
     };
 
     var min,max ;
@@ -34,7 +45,7 @@ function draw_chart(m_data,div_id,m_title){
     for(var i = 0 ; i < m_data.length; i++){
         var one_day = m_data[i];
         option['xAxis']['data'].push(one_day[0])
-        option['series'][0]['data'].push(one_day[1])
+        option['series'][0]['data'].push(one_day[1].toFixed(2)) // toFixed(2)：保留两位小数（四舍五入）
         if(i == 0){
             min = max = one_day[1];
         }else{
@@ -47,10 +58,8 @@ function draw_chart(m_data,div_id,m_title){
         }
 
     }
-    option['yAxis']['min'] = parseInt(min)-1;
+    option['yAxis']['min'] = parseInt(min);
     option['yAxis']['max'] = parseInt(max)+1;
-    console.log(min);
-    console.log(max);
 
     myChart.setOption(option);
 }
@@ -61,10 +70,12 @@ if(recent_data != null){
 }
 
 if(predict_data != null){
-    draw_chart(predict_data,'future','未来30天股票数据');
+    draw_chart(predict_data,'future','未来10天股票数据');
 }
 
-
+var ops = document.getElementById(stock_code)
+ops.selected = true
+console.log(ops.value)
 
 
 

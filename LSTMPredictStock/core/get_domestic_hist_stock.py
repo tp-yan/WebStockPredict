@@ -49,6 +49,15 @@ def get_all_last_data(start_date): # 得到从start_date至今日 所有最新�
     for code, company_name in companies.items():
         get_domestic_stock(code, start_date, end_date)
 
+def get_single_last_data(stock_code,start_date="2010-01-01"):
+    # start_date = '2010-06-21'  # 只能按整年获取至今日数据
+    cur = datetime.now()
+    year = timedelta(days=365)
+    cur = cur + year  # 在当前日期上加一年
+    end_date = cur.strftime("%Y-%m-%d")  # 获取今年最新数据
+
+    get_domestic_stock(stock_code, start_date, end_date)
+
 
 if __name__ == '__main__':
     get_all_last_data("2010-01-01")

@@ -11,10 +11,11 @@ import numpy as np
 import math
 import pandas as pd
 import matplotlib.pyplot as plt
-from .core.data_processor import DataLoader
-from .core.model import Model
+from LSTMPredictStock.core.data_processor import DataLoader
+from LSTMPredictStock.core.model import Model
 from datetime import datetime,timedelta
-from .core.get_domestic_hist_stock import get_all_last_data
+from LSTMPredictStock.core.get_domestic_hist_stock import get_all_last_data
+from LSTMPredictStock.core.get_domestic_hist_stock import get_single_last_data
 
 
 def plot_results(predicted_data, true_data):  # predicted_data与true_data：同长度一维数组
@@ -208,6 +209,7 @@ def main(stock_code, train=False, predict=False):
 
     # 二维数组：[[data,value],[...]]
 def get_hist_data(stock_code, recent_day=30):  # 获取某股票，指定天数的历史close数据,包含日期
+    get_single_last_data(stock_code)
     root_dir = get_parent_dir()
     file_path = os.path.join(root_dir, "data/" + stock_code + ".csv")
     cols = ['Date', 'Close']
@@ -217,18 +219,24 @@ def get_hist_data(stock_code, recent_day=30):  # 获取某股票，指定天数�
 
 
 def train_all_stock():
-    configs = json.load(open('config.json', 'r'))
+    get_all_last_data(start_date="2010-01-01")
+    configs = json.load(open(get_config_path(), 'r'))
     companies = configs['companies']
     for stock_code in companies.keys():
         train_model(stock_code)
 
+    return 0
 
-def predict_all_stock():
+
+def predict_all_stock(pre_len=10):
     file_path = get_config_path()
     configs = json.load(open(file_path, 'r'))
     companies = configs['companies']
+    predict_list = []
     for stock_code in companies.keys():
-        prediction(stock_code=stock_code, real=True, pre_len=20)
+        predict_list.append(prediction(stock_code=stock_code, real=True, pre_len=pre_len))
+
+    return predict_list
 
 
 def get_config_path():  # config.json的绝对路径
@@ -247,5 +255,5 @@ def get_parent_dir():   # 当前文件的父目录绝对路径
 
 if __name__ == '__main__':
     # get_all_last_data("2010-01-01") # 先获得最新数据
-    # train_all_stock()
-    predict_all_stock()
+    train_all_stock()
+    # predict_all_stock()
