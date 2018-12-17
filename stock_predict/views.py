@@ -8,6 +8,8 @@ from datetime import datetime as dt
 from apscheduler.scheduler import Scheduler
 # Create your views here.
 
+DEBUG = False
+
 def get_hist_predict_data(stock_code):
     recent_data,predict_data = None,None
 
@@ -26,7 +28,7 @@ def get_hist_predict_data(stock_code):
         for single in all_data:
             now = dt.now()
             start_date = dt.strptime(single.start_date,"%Y-%m-%d")
-            if now.date() > start_date.date():  # 更新预测数据
+            if DEBUG & now.date() > start_date.date():  # 更新预测数据
                 single.set_data(run.get_hist_data(stock_code))
                 single.save()
 
@@ -44,7 +46,7 @@ def get_hist_predict_data(stock_code):
         for single in all_data:
             now = dt.now()
             start_date = dt.strptime(single.start_date,"%Y-%m-%d")
-            if now.date() > start_date.date():  # 更新预测数据
+            if DEBUG & now.date() > start_date.date():  # 更新预测数据
                 single.set_data(run.prediction(stock_code, pre_len=10))
                 single.save()
 
