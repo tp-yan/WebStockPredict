@@ -18,7 +18,7 @@ class HistoryData(models.Model):
         self.data = json.dumps(list_data)   # 可以将list或dict类型 转为字符串
 
     def get_data(self):
-        return json.loads(self.data)    # 可以将字符串 转为list或dict类型
+        return json.loads(self.data)        # 可以将字符串 转为list或dict类型
 
 class PredictData(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
@@ -26,8 +26,13 @@ class PredictData(models.Model):
     start_date = models.CharField(max_length=30)
 
     def set_data(self, list_data):  # 将list类型数据，转为字符串存储
-        self.start_date = list_data[0][0]  # 记录第一条数据的日期
-        self.data = json.dumps(list_data)  # 可以将list或dict类型 转为字符串
+        try:
+            self.start_date = list_data[0][0]  # 记录第一条数据的日期
+            self.data = json.dumps(list_data)  # 可以将list或dict类型 转为字符串
+        except KeyError as ke:
+            raise KeyError('list_data must be a list!')
+        except TypeError as te:
+            raise TypeError('list_data must be 2 dimensions!')
 
     def get_data(self):
         return json.loads(self.data)  # 可以将字符串 转为list或dict类型
