@@ -15,12 +15,12 @@ class HistoryData(models.Model):
 
     def set_data(self,list_data):   # 将list类型数据，转为字符串存储
         try:
-            st_da = list_data[0][0]  # 记录第一条数据的日期
+            start_da = list_data[0][0]  # 记录第一条数据的日期
             data_json = json.dumps(list_data)  # 可以将list或dict类型 转为字符串
-        except (KeyError,TypeError):
+        except (KeyError,TypeError,IndexError):
             raise Exception("list_data must be 2 dimensions list.")
         else:
-            self.start_date = st_da
+            self.start_date = start_da
             self.data = data_json
 
     def get_data(self):
