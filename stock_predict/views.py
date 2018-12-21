@@ -1,21 +1,20 @@
 import json
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from LSTMPredictStock import run
 from stock_predict import models
 from datetime import datetime as dt
 from apscheduler.scheduler import Scheduler
+from .models import Company
 # Create your views here.
 
 DEBUG = False
 
 def get_hist_predict_data(stock_code):
     recent_data,predict_data = None,None
-
-    company = models.Company.objects.get(stock_code=stock_code)
-
-    # recent_data = run.get_hist_data(stock_code)
+    # company = models.Company.objects.get(stock_code=stock_code)
+    company = get_object_or_404(Company, stock_code=stock_code)
 
     if company.historydata_set.count() <= 0:
         history_data = models.HistoryData()
@@ -73,9 +72,6 @@ sched = Scheduler()
 
 # 定时任务
 # @sched.interval_schedule(seconds=2)   # 每2s执行一次
-# def test_scheduler():
-#     print("调度")
-
 @sched.cron_schedule(hour=0,minute=0)   # 每日凌晨调度一次
 def train_models():
     run.train_all_stock()
