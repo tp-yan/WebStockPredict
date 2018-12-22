@@ -11,7 +11,7 @@ from .models import Company
 
 import pandas as pd
 
-LOCAL = True
+# LOCAL = False
 
 def get_hist_predict_data(stock_code):
     recent_data,predict_data = None,None
@@ -28,8 +28,9 @@ def get_hist_predict_data(stock_code):
         all_data = company.historydata_set.all()
         for single in all_data:
             now = dt.now()
-            start_date = dt.strptime(single.start_date,"%Y-%m-%d")
-            if LOCAL & (now.date() > start_date.date()):        # 更新预测数据
+            end_date = single.get_data()[-1][0]
+            end_date = dt.strptime(end_date,"%Y-%m-%d")
+            if now.date() > end_date.date():        # 更新预测数据
                 single.set_data(run.get_hist_data(stock_code=stock_code,recent_day=20))
                 single.save()
 
@@ -47,7 +48,7 @@ def get_hist_predict_data(stock_code):
         for single in all_data:
             now = dt.now()
             start_date = dt.strptime(single.start_date,"%Y-%m-%d")
-            if LOCAL & (now.date() > start_date.date()):  # 更新预测数据
+            if now.date() > start_date.date():  # 更新预测数据
                 single.set_data(run.prediction(stock_code, pre_len=10))
                 single.save()
 

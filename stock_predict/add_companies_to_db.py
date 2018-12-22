@@ -10,5 +10,3 @@ def add_company():
         company.name = name
         company.save()
 
-if __name__ == "__main__":
-    add_company()

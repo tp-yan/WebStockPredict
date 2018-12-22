@@ -2,36 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2994abc8-5baf-4237-83a4-d45792092108" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/stock_predict/stock_index/000063.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_predict/stock_index/000066.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_predict/stock_index/000651.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_predict/stock_index/000768.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_predict/stock_index/600320.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_predict/stock_index/600718.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_predict/stock_index/600839.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_predict/stock_index/601390.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_predict/stock_index/601766.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stock_predict/stock_index/601988.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.coverage" beforeDir="false" afterPath="$PROJECT_DIR$/.coverage" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LSTMPredictStock/core/get_stocks_data.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlcov/WebStockPredict_urls_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/WebStockPredict_urls_py.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlcov/coverage_html.js" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/coverage_html.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_core_data_processor_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_core_data_processor_py.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_core_get_domestic_hist_stock_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_core_get_domestic_hist_stock_py.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_core_model_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_core_model_py.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_run_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_run_py.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htmlcov/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlcov/jquery.ba-throttle-debounce.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/jquery.ba-throttle-debounce.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlcov/jquery.hotkeys.js" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/jquery.hotkeys.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlcov/jquery.isonscreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/jquery.isonscreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlcov/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/jquery.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlcov/jquery.tablesorter.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/jquery.tablesorter.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htmlcov/status.json" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/status.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlcov/stock_predict_add_companies_to_db_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/stock_predict_add_companies_to_db_py.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlcov/stock_predict_models_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/stock_predict_models_py.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htmlcov/stock_predict_tests_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/stock_predict_tests_py.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlcov/stock_predict_urls_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/stock_predict_urls_py.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htmlcov/stock_predict_views_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/stock_predict_views_py.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlcov/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stock_predict/add_companies_to_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/add_companies_to_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_predict/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_predict/static/stock_predict/js/draw_charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/static/stock_predict/js/draw_charts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_predict/static/stock_predict/js/echarts.js" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/static/stock_predict/js/echarts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_predict/templates/stock_predict/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/templates/stock_predict/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_predict/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_predict/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/views.py" afterDir="false" />
     </list>
@@ -45,11 +32,12 @@
     <session id="-19224540">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="4" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.3" value="2" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -57,57 +45,64 @@
           <entry key="csv" value="3" />
           <entry key="html" value="1" />
           <entry key="js" value="1" />
-          <entry key="py" value="21" />
+          <entry key="md" value="1" />
+          <entry key="py" value="25" />
+          <entry key="sqlite3" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="1" />
           <entry key="JavaScript" value="1" />
+          <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="21" />
+          <entry key="Python" value="25" />
+          <entry key="SQL" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="246" />
+          <entry key="Python Console" value="424" />
           <entry key="html" value="256" />
-          <entry key="js" value="758" />
-          <entry key="py" value="3611" />
+          <entry key="js" value="768" />
+          <entry key="py" value="5038" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="256" />
-          <entry key="JavaScript" value="758" />
-          <entry key="Python" value="3857" />
+          <entry key="JavaScript" value="768" />
+          <entry key="Python" value="5462" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/stock_predict/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1042">
-              <caret line="187" lean-forward="true" selection-start-line="187" selection-end-line="187" />
+            <state relative-caret-position="194">
+              <caret line="93" column="11" lean-forward="true" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
               <folding>
-                <marker date="1545441691497" expanded="true" signature="5735:5740" ph="..." />
+                <element signature="e#0#11#0" expanded="true" />
+                <marker date="1545460892581" expanded="true" signature="3341:4019" ph="..." />
+                <marker date="1545460892581" expanded="true" signature="6583:6972" ph="..." />
+                <marker date="1545460892581" expanded="true" signature="7007:7012" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stock_predict/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="96" column="39" lean-forward="true" selection-start-line="96" selection-start-column="39" selection-end-line="96" selection-end-column="39" />
+            <state relative-caret-position="194">
+              <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1545451350931" expanded="true" signature="2018:2771" ph="..." />
-                <marker date="1545451350931" expanded="true" signature="2803:3133" ph="..." />
+                <marker date="1545460640920" expanded="true" signature="2036:2789" ph="..." />
+                <marker date="1545460640920" expanded="true" signature="2821:3151" ph="..." />
               </folding>
             </state>
           </provider>
@@ -116,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LSTMPredictStock/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="255" column="26" lean-forward="true" selection-start-line="255" selection-start-column="26" selection-end-line="255" selection-end-column="26" />
+            <state relative-caret-position="184">
+              <caret line="179" column="34" selection-start-line="179" selection-start-column="34" selection-end-line="179" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -125,8 +120,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stock_predict/static/stock_predict/js/draw_charts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-442">
-              <caret line="28" column="10" lean-forward="true" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
+            <state relative-caret-position="272">
+              <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -134,11 +129,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stock_predict/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="33" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="33" />
+            <state relative-caret-position="210">
+              <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1545449300872" expanded="true" signature="225:990" ph="..." />
+                <marker date="1545455231425" expanded="true" signature="225:659" ph="..." />
               </folding>
             </state>
           </provider>
@@ -151,6 +146,8 @@
       <find>print</find>
       <find>000063</find>
       <find>get_pa</find>
+      <find>create_company</find>
+      <find>timedelta</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -162,11 +159,12 @@
         <option value="$PROJECT_DIR$/stock_predict/urls.py" />
         <option value="$PROJECT_DIR$/WebStockPredict/urls.py" />
         <option value="$PROJECT_DIR$/stock_predict/get_stock_index.py" />
-        <option value="$PROJECT_DIR$/stock_predict/tests.py" />
         <option value="$PROJECT_DIR$/stock_predict/templates/stock_predict/home.html" />
         <option value="$PROJECT_DIR$/stock_predict/static/stock_predict/js/draw_charts.js" />
         <option value="$PROJECT_DIR$/stock_predict/models.py" />
+        <option value="$PROJECT_DIR$/stock_predict/add_companies_to_db.py" />
         <option value="$PROJECT_DIR$/stock_predict/views.py" />
+        <option value="$PROJECT_DIR$/stock_predict/tests.py" />
       </list>
     </option>
   </component>
@@ -204,17 +202,6 @@
             <path>
               <item name="WebStockPredict" type="b2602c69:ProjectViewProjectNode" />
               <item name="WebStockPredict" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebStockPredict" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebStockPredict" type="462c0819:PsiDirectoryNode" />
-              <item name="stock_predict" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WebStockPredict" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WebStockPredict" type="462c0819:PsiDirectoryNode" />
-              <item name="stock_predict" type="462c0819:PsiDirectoryNode" />
-              <item name="stock_index" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -300,7 +287,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15918098" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16380449" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -311,7 +298,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32907802" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32907802" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4993395" visible="true" weight="0.25106382" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4993395" visible="true" weight="0.3177305" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5006605" side_tool="true" weight="0.27659574" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.2567376" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -372,13 +359,7 @@
         <state relative-caret-position="-235" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stock_predict/get_stock_index.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="28" column="50" lean-forward="true" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_predict/get_stock_index.py" />
     <entry file="file://C:/Anaconda3/envs/MachineLearning/Lib/site-packages/django/core/handlers/exception.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -386,57 +367,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stock_predict/static/stock_predict/js/draw_charts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-442">
-          <caret line="28" column="10" lean-forward="true" selection-start-line="28" selection-start-column="10" selection-end-line="28" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stock_predict/templates/stock_predict/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="12" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#1;n#center#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://C:/Anaconda3/envs/MachineLearning/Lib/site-packages/pandas/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LSTMPredictStock/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="255" column="26" lean-forward="true" selection-start-line="255" selection-start-column="26" selection-end-line="255" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stock_predict/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="33" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1545449300872" expanded="true" signature="225:990" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/stock_predict/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1042">
-          <caret line="187" lean-forward="true" selection-start-line="187" selection-end-line="187" />
-          <folding>
-            <marker date="1545441691497" expanded="true" signature="5735:5740" ph="..." />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://C:/Anaconda3/envs/MachineLearning/Lib/site-packages/pandas/core/indexes/base.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -452,14 +391,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stock_predict/views.py">
+    <entry file="file://$PROJECT_DIR$/db.sqlite3">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_predict/static/stock_predict/js/draw_charts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="96" column="39" lean-forward="true" selection-start-line="96" selection-start-column="39" selection-end-line="96" selection-end-column="39" />
+        <state relative-caret-position="272">
+          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSTMPredictStock/core/data_processor.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSTMPredictStock/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_predict/add_companies_to_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Anaconda3/envs/MachineLearning/Lib/unittest/case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="1220" column="60" lean-forward="true" selection-start-line="1220" selection-start-column="60" selection-end-line="1220" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_predict/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <marker date="1545451350931" expanded="true" signature="2018:2771" ph="..." />
-            <marker date="1545451350931" expanded="true" signature="2803:3133" ph="..." />
+            <marker date="1545455231425" expanded="true" signature="225:659" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LSTMPredictStock/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="179" column="34" selection-start-line="179" selection-start-column="34" selection-end-line="179" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_predict/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1545460640920" expanded="true" signature="2036:2789" ph="..." />
+            <marker date="1545460640920" expanded="true" signature="2821:3151" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_predict/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="93" column="11" lean-forward="true" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1545460892581" expanded="true" signature="3341:4019" ph="..." />
+            <marker date="1545460892581" expanded="true" signature="6583:6972" ph="..." />
+            <marker date="1545460892581" expanded="true" signature="7007:7012" ph="..." />
           </folding>
         </state>
       </provider>

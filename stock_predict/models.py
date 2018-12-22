@@ -19,17 +19,6 @@ class StockIndex(models.Model):
     jin_zi = models.IntegerField(default=0)
     zong_he = models.IntegerField(default=0)
 
-    def set_fields(self,fields):
-        ri_qi = fields['ri_qi']
-        zi_jin = fields['zi_jin']
-        qiang_du = fields['qiang_du']
-        feng_xian = fields['feng_xian']
-        zhuan_qiang = fields['zhuan_qiang']
-        chang_yu = fields['chang_yu']
-        jin_zi = fields['jin_zi']
-        zong_he = fields['zong_he']
-
-
 class HistoryData(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     data = models.TextField() # 字符串类型

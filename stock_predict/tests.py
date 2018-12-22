@@ -1,4 +1,5 @@
 import json
+from datetime import datetime, timedelta
 
 from django.http import Http404
 from django.test import TestCase
@@ -6,22 +7,13 @@ from django.urls import reverse
 
 from .models import Company, HistoryData, PredictData
 from .views import get_hist_predict_data
-
-# Create your tests here.
-
-def create_company(stock_code, name):
-    """
-    :param stock_code:股票代码
-    :param name: 公司名字
-    :return: 临时数据库中的一个Company对象
-    """
-    return Company.objects.create(stock_code=stock_code, name=name)
+from .add_companies_to_db import add_company
 
 
 class HistoryDataModelTests(TestCase):
     def test_set_data_with_not_list(self):
         """
-        使用非list类型传入set_data
+        测试使用非list类型传入set_data，应该抛出异常
         """
         hd = HistoryData()
         # 测试函数hd.set_data（list_data=data）Raises Exception，并且包含指定报错msg
@@ -37,7 +29,7 @@ class HistoryDataModelTests(TestCase):
 
     def test_set_data(self):
         """
-        正常调用set_data方法，验证HistoryData对象的data与start_date
+        测试正确调用set_data方法，验证HistoryData对象的属性data与start_date被修改
         """
         hd = HistoryData()
         list_data = [['2018-02-03', 1.2], ['2019-01-01', 10]]
@@ -57,7 +49,7 @@ class HistoryDataModelTests(TestCase):
 class PredictDataModelTests(TestCase):
     def test_set_data_with_not_list(self):
         """
-        使用非list类型传入set_data
+        测试使用非list类型传入set_data，应该抛出异常
         """
         pd = PredictData()
         # 测试函数hd.set_data（list_data=data）Raises Exception，并且包含指定报错msg
@@ -73,7 +65,7 @@ class PredictDataModelTests(TestCase):
 
     def test_set_data(self):
         """
-        正常调用set_data方法，验证HistoryData对象的data与start_date
+        测试正确调用set_data方法，验证HistoryData对象的属性data与start_date被正确修改
         """
         pd = PredictData()
         list_data = [['2018-02-03', 1.2], ['2019-01-01', 10]]
@@ -83,7 +75,7 @@ class PredictDataModelTests(TestCase):
 
     def test_get_data(self):
         """
-        测试test_get_data返回 list对象
+        测试test_get_data返回的是list对象
         """
         pd = PredictData()
         list_data = [['2018-02-03',1.2], ['2019-01-01',10]]
@@ -96,11 +88,11 @@ def create_company(stock_code,name):
 
 class HistPredictDataFun(TestCase):
     """
-    测试get_hist_predict_data方法
+    测试 get_hist_predict_data 方法
     """
-    def test_get_hist_predict_data_unknown_stock_code(self):
+    def test_input_unknown_stock_code(self):
         """
-        传入未知stock_code， 返回404错误
+        传入未知的stock_code， 返回404错误
         """
         stock_code = "10000"
         try:
@@ -108,38 +100,65 @@ class HistPredictDataFun(TestCase):
         except Http404 as e:
             self.assertEquals(e.args[0],"No Company matches the given query.")
 
-    def test_get_data_not_exist_in_db(self):
+    def test_data_exist_in_db(self):
         """
-        指定股票代码的历史数据和预测数据，在数据库中没有记录时，从API获取历史数据，并使用模型预测数据
-        最后将它们存入数据库
+        当数据库存在数据且为最新数据时，返回数据库中的数据
         """
-        c = create_company(stock_code="000063",name="中华")
-        re_data,pre_data = get_hist_predict_data(stock_code=c.stock_code)
-        self.assertNotEquals(re_data,None)
-        self.assertNotEquals(pre_data,None)
-        self.assertEquals(re_data,c.historydata_set.first().get_data())
-        self.assertEquals(pre_data,c.predictdata_set.first().get_data())
-        self.assertGreater(HistoryData.objects.count(),0)
-        self.assertGreater(PredictData.objects.count(),0)
+        code = "600715"
+        cp = create_company(stock_code=code,name="格力集团")
+        # 构造历史、预测数据
+        now = datetime.now()
+        hist_data = [['2018-12-20',10],[str(now.date()),10.2]]
+        pred_data = [[str(now.date()),10],[str(now.date()+timedelta(days=1)),10.2]]
+
+        cp.historydata_set.create(data=json.dumps((hist_data)),start_date=hist_data[0][0])
+        cp.predictdata_set.create(data=json.dumps((pred_data)),start_date=pred_data[0][0])
+
+        recent,predict = get_hist_predict_data(stock_code=code)
+        self.assertEquals(hist_data,recent)
+        self.assertEquals(pred_data,predict)
+
+    def test_data_not_exist_in_db(self):
+        """
+        测试当指定股票代码的历史数据和预测数据，在数据库中没有记录时，则从API获取历史数据，使用模型预测数据，然后保存到数据库
+        """
+        c = create_company(stock_code="000063",name="中兴通讯")
+        self.assertEquals(c.historydata_set.count(),0)
+        self.assertEquals(c.predictdata_set.count(),0)
+        get_hist_predict_data(stock_code=c.stock_code)
+        self.assertGreater(c.historydata_set.count(),0)
+        self.assertGreater(c.predictdata_set.count(),0)
+
+        now = datetime.now()
+        if now.isoweekday() == 6:
+            now = now + timedelta(days=2)
+        elif now.isoweekday() == 7:
+            now = now + timedelta(days=1)
+
+        self.assertEquals(c.predictdata_set.first().start_date,str(now.date()))
+
 
     def test_get_data_exist_in_db(self):
         """
-        指定股票代码的历史数据和预测数据已保存在数据库，应该正常被读取
+        测试当数据库所存数据不是最新时，应该将数据更新
         """
-        c = create_company(stock_code="000063", name="中华")
-        data1 = r"[['2018-02-12',19],['2018-02-13',20.1]]"
-        start_date1 = r'2018-02-12'
-        data2 = r"[['2018-02-14',20.5],['2018-02-15',21.1]]"
-        start_date2 = r'2018-02-14'
-        hd = c.historydata_set.create(data=json.dumps(data1),start_date=start_date1)
-        pd = c.predictdata_set.create(data=json.dumps(data2),start_date=start_date2)
-        self.assertGreater(c.historydata_set.count(),0)
-        self.assertGreater(c.predictdata_set.count(),0)
-        re_data, pre_data = get_hist_predict_data(stock_code=c.stock_code)
-        self.assertEquals(re_data,hd.get_data())
-        self.assertEquals(pre_data,pd.get_data())
+        cp = create_company(stock_code="000063", name="中兴通讯")
+        # 构造过时历史、预测数据
+        hist_data = [['2018-12-12', 10], ['2018-12-13', 10.2]]
+        pred_data = [['2018-12-19', 10], ['2018-12-20', 10.2]]
 
+        cp.historydata_set.create(data=json.dumps((hist_data)), start_date=hist_data[0][0])
+        cp.predictdata_set.create(data=json.dumps((pred_data)), start_date=pred_data[0][0])
+        get_hist_predict_data(stock_code=cp.stock_code)
 
+        hd_new = cp.historydata_set.last()
+        hd_last_time = datetime.strptime(hd_new.get_data()[-1][0],"%Y-%m-%d")
+        pd_new = cp.predictdata_set.last()
+        pd_last_time = datetime.strptime(pd_new.start_date, "%Y-%m-%d")
+        self.assertGreater(hd_last_time,datetime.strptime(hist_data[1][0],"%Y-%m-%d"))
+        self.assertGreater(pd_last_time,datetime.strptime(pred_data[0][0],"%Y-%m-%d"))
+
+'''
 class HomeView(TestCase):
     def test_return_data(self):
         """
@@ -159,6 +178,19 @@ class HomeView(TestCase):
         self.assertContains(response,data1)
         self.assertContains(response,data2)
 
+class FuncAddCompany2DB(TestCase):
+    def test_add_company(self):
+        """
+        测试调用该方法，数据库成功添加了股票公司数据
+        """
+        companies = Company.objects.all()
+        self.assertQuerysetEqual(companies,[])
+        add_company()
+        self.assertEquals(Company.objects.count(),10)
+        self.assertEquals(Company.objects.first().stock_code,'600718')
+        self.assertEquals(Company.objects.first().name,'东软集团')
+
+
 class PredictStockAction(TestCase):
     def test_predict_not_exist_stock(self):
         """
@@ -170,15 +202,38 @@ class PredictStockAction(TestCase):
 
     def test_predict_stock(self):
         """
-        输入正确的股票代码，显示相应的图表
+        测试当数据库有数据时，且是最新时，
+        输入正确的股票代码，返回相应的历史、预测以及指标数据
         """
         c = create_company(stock_code="000651", name="格力电器")
+        # 历史数据
         data1 = r"[['2018-02-12',19],['2018-02-13',20.1]]"
         start_date1 = r'2018-02-12'
+        # 预测数据
         data2 = r"[['2018-02-14',20.5],['2018-02-15',21.1]]"
         start_date2 = r'2018-02-14'
+        # 指标数据
+        row = {'ri_qi':'2018-12-22','zi_jin':7,'qiang_du':9,'feng_xian':4,'zhuan_qiang':7,'chang_yu':8,'jin_zi':6,
+               'zong_he':9}
+        row2 = {'ri_qi': '2018-12-22', 'zi_jin': 7, 'qiang_du': 9, 'feng_xian': 4, 'zhuan_qiang': 7, 'chang_yu': 8,
+               'jin_zi': 6,
+               'zong_he': 9}
+        row3 = {'ri_qi': '2018-12-22', 'zi_jin': 7, 'qiang_du': 9, 'feng_xian': 4, 'zhuan_qiang': 7, 'chang_yu': 8,
+               'jin_zi': 6,
+               'zong_he': 9}
+
         hd = c.historydata_set.create(data=json.dumps(data1), start_date=start_date1)
         pd = c.predictdata_set.create(data=json.dumps(data2), start_date=start_date2)
+        c.stockindex_set.create(ri_qi=row['ri_qi'],zi_jin=row['zi_jin'],qiang_du=row['qiang_du'],feng_xian=row['feng_xian'],
+                zhuan_qiang=row['zhuan_qiang'],chang_yu=row['chang_yu'],jin_zi=row['jin_zi'],zong_he=row['zong_he'])
+        c.stockindex_set.create(ri_qi=row2['ri_qi'], zi_jin=row2['zi_jin'], qiang_du=row2['qiang_du'],
+                                feng_xian=row2['feng_xian'],
+                                zhuan_qiang=row2['zhuan_qiang'], chang_yu=row2['chang_yu'], jin_zi=row2['jin_zi'],
+                                zong_he=row2['zong_he'])
+        c.stockindex_set.create(ri_qi=row3['ri_qi'], zi_jin=row3['zi_jin'], qiang_du=row3['qiang_du'],
+                                feng_xian=row3['feng_xian'],
+                                zhuan_qiang=row3['zhuan_qiang'], chang_yu=row3['chang_yu'], jin_zi=row3['jin_zi'],
+                                zong_he=row3['zong_he'])
 
         url = reverse('stock_predict:predict')
         response = self.client.post(url, data={"stock_code": c.stock_code})
@@ -186,3 +241,4 @@ class PredictStockAction(TestCase):
         self.assertContains(response,data1)
         self.assertContains(response,data2)
 
+'''

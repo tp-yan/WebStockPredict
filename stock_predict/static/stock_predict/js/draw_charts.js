@@ -71,7 +71,7 @@ function draw_radar(){
     var option = {
         title : {
             text: '近3个交易日综合评分',
-            subtext:'综合评分' + (indexs[0]['zong_he']/11.0*10).toFixed(1),
+            subtext:'综合评分' + (indexs[0]['zong_he']/11.0*100).toFixed(1),
             subtextStyle : {
             color :'red',
             fontStyle :'normal',
@@ -194,74 +194,3 @@ ops.selected = true;
 if(indexs != null){
     draw_radar();
 }
-
-/*
-console.log(indexs[0]);
-console.log(indexs[1]);
-console.log(indexs[2]);
-function test(){
-    var test = echarts.init(document.getElementById('test'));
-    var option = {
-            title : {
-                text: '罗纳尔多 vs 舍普琴科',
-                subtext: '完全实况球员数据'
-            },
-            tooltip : {
-                trigger: 'axis'
-            },
-            legend: {
-                x : 'center',
-                data:['罗纳尔多','舍普琴科']
-            },
-            toolbox: {
-                show : true,
-                feature : {
-                    mark : {show: true},
-                    dataView : {show: true, readOnly: false},
-                    restore : {show: true},
-                    saveAsImage : {show: true}
-                }
-            },
-            calculable : true,
-            polar : [
-                {
-                    indicator : [
-                        {text : '进攻', max  : 100},
-                        {text : '防守', max  : 100},
-                        {text : '体能', max  : 100},
-                        {text : '速度', max  : 100},
-                        {text : '力量', max  : 100},
-                        {text : '技巧', max  : 100}
-                    ],
-                    radius : 130
-                }
-            ],
-            series : [
-                {
-                    name: '完全实况球员数据',
-                    type: 'radar',
-                    itemStyle: {
-                        normal: {
-                            areaStyle: {
-                                type: 'default'
-                            }
-                        }
-                    },
-                    data : [
-                        {
-                            value : [97, 42, 88, 94, 90, 86],
-                            name : '舍普琴科'
-                        },
-                        {
-                            value : [97, 32, 74, 95, 88, 92],
-                            name : '罗纳尔多'
-                        }
-                    ]
-                }
-            ]
-        };
-    test.setOption(option);
-}
-test();
-*/
-
