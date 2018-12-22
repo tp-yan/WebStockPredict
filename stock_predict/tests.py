@@ -106,7 +106,7 @@ class HistPredictDataFun(TestCase):
         """
         code = "600715"
         cp = create_company(stock_code=code,name="格力集团")
-        # 构造历史、预测数据
+        # 构造最新历史、预测数据
         now = datetime.now()
         hist_data = [['2018-12-20',10],[str(now.date()),10.2]]
         pred_data = [[str(now.date()),10],[str(now.date()+timedelta(days=1)),10.2]]
@@ -158,26 +158,6 @@ class HistPredictDataFun(TestCase):
         self.assertGreater(hd_last_time,datetime.strptime(hist_data[1][0],"%Y-%m-%d"))
         self.assertGreater(pd_last_time,datetime.strptime(pred_data[0][0],"%Y-%m-%d"))
 
-'''
-class HomeView(TestCase):
-    def test_return_data(self):
-        """
-        测试正确返回历史与预测数据
-        """
-        c = create_company(stock_code="600718", name="东软集团")
-        data1 = r"[['2018-02-12',19],['2018-02-13',20.1]]"
-        start_date1 = r'2018-02-12'
-        data2 = r"[['2018-02-14',20.5],['2018-02-15',21.1]]"
-        start_date2 = r'2018-02-14'
-        hd = c.historydata_set.create(data=json.dumps(data1), start_date=start_date1)
-        pd = c.predictdata_set.create(data=json.dumps(data2), start_date=start_date2)
-        response = self.client.get(reverse('stock_predict:home'))
-        self.assertEquals(response.status_code,200)
-        self.assertContains(response,'data')
-        self.assertContains(response,c.stock_code)
-        self.assertContains(response,data1)
-        self.assertContains(response,data2)
-
 class FuncAddCompany2DB(TestCase):
     def test_add_company(self):
         """
@@ -189,6 +169,62 @@ class FuncAddCompany2DB(TestCase):
         self.assertEquals(Company.objects.count(),10)
         self.assertEquals(Company.objects.first().stock_code,'600718')
         self.assertEquals(Company.objects.first().name,'东软集团')
+
+# 为公司创造指标数据
+def create_stock_index(company):
+    row = {'ri_qi': '2018-12-22', 'zi_jin': 8, 'qiang_du': 6, 'feng_xian': 8, 'zhuan_qiang': 5, 'chang_yu': 4,
+           'jin_zi': 7,
+           'zong_he': 9}
+    row2 = {'ri_qi': '2018-12-22', 'zi_jin': 5, 'qiang_du': 7, 'feng_xian': 8, 'zhuan_qiang': 5, 'chang_yu': 7,
+            'jin_zi': 6,
+            'zong_he': 7}
+    row3 = {'ri_qi': '2018-12-22', 'zi_jin': 8, 'qiang_du': 6, 'feng_xian': 5, 'zhuan_qiang': 4, 'chang_yu': 6,
+            'jin_zi': 5,
+            'zong_he': 8}
+    stock_index = company.stockindex_set.create(ri_qi=row['ri_qi'], zi_jin=row['zi_jin'], qiang_du=row['qiang_du'],
+                            feng_xian=row['feng_xian'],
+                            zhuan_qiang=row['zhuan_qiang'], chang_yu=row['chang_yu'], jin_zi=row['jin_zi'],
+                            zong_he=row['zong_he'])
+    company.stockindex_set.create(ri_qi=row2['ri_qi'], zi_jin=row2['zi_jin'], qiang_du=row2['qiang_du'],
+                            feng_xian=row2['feng_xian'],
+                            zhuan_qiang=row2['zhuan_qiang'], chang_yu=row2['chang_yu'], jin_zi=row2['jin_zi'],
+                            zong_he=row2['zong_he'])
+    company.stockindex_set.create(ri_qi=row3['ri_qi'], zi_jin=row3['zi_jin'], qiang_du=row3['qiang_du'],
+                            feng_xian=row3['feng_xian'],
+                            zhuan_qiang=row3['zhuan_qiang'], chang_yu=row3['chang_yu'], jin_zi=row3['jin_zi'],
+                            zong_he=row3['zong_he'])
+    return stock_index
+
+# 为股票创造最新的历史与预测数据
+def create_last_hist_predict_data(company):
+    now = datetime.now()
+    hist_data = [[str(now.date() + timedelta(days=-1)), 10], [str(now.date()), 10.2]]
+    pred_data = [[str(now.date()), 10], [str(now.date() + timedelta(days=1)), 10.2]]
+
+    company.historydata_set.create(data=json.dumps(hist_data), start_date=hist_data[0][0])
+    company.predictdata_set.create(data=json.dumps(pred_data), start_date=pred_data[0][0])
+
+    return hist_data,pred_data
+class HomeView(TestCase):
+    def test_return_data(self):
+        """
+        测试访问主页时，返回股票代码为：600718的数据，包括：历史、预测和指标数据
+        """
+        # 构造最新历史、预测数据
+        cp = create_company(stock_code="600718", name="东软集团")
+        hist_data,pred_data = create_last_hist_predict_data(cp)
+        stock_index = create_stock_index(cp)
+
+        response = self.client.get(reverse('stock_predict:home'))
+        self.assertEquals(response.status_code,200)
+        self.assertContains(response,'data')
+        self.assertContains(response,cp.stock_code)
+        self.assertContains(response,str(hist_data[0][0]))
+        self.assertContains(response,str(pred_data[0][0]))
+        self.assertContains(response,stock_index.ri_qi)
+        self.assertContains(response,stock_index.zi_jin)
+        self.assertContains(response,stock_index.jin_zi)
+        self.assertContains(response,stock_index.zong_he)
 
 
 class PredictStockAction(TestCase):
@@ -202,43 +238,18 @@ class PredictStockAction(TestCase):
 
     def test_predict_stock(self):
         """
-        测试当数据库有数据时，且是最新时，
-        输入正确的股票代码，返回相应的历史、预测以及指标数据
+        测试输入正确的股票代码时，应该返回该股票的历史、预测、指标数据
         """
-        c = create_company(stock_code="000651", name="格力电器")
-        # 历史数据
-        data1 = r"[['2018-02-12',19],['2018-02-13',20.1]]"
-        start_date1 = r'2018-02-12'
-        # 预测数据
-        data2 = r"[['2018-02-14',20.5],['2018-02-15',21.1]]"
-        start_date2 = r'2018-02-14'
-        # 指标数据
-        row = {'ri_qi':'2018-12-22','zi_jin':7,'qiang_du':9,'feng_xian':4,'zhuan_qiang':7,'chang_yu':8,'jin_zi':6,
-               'zong_he':9}
-        row2 = {'ri_qi': '2018-12-22', 'zi_jin': 7, 'qiang_du': 9, 'feng_xian': 4, 'zhuan_qiang': 7, 'chang_yu': 8,
-               'jin_zi': 6,
-               'zong_he': 9}
-        row3 = {'ri_qi': '2018-12-22', 'zi_jin': 7, 'qiang_du': 9, 'feng_xian': 4, 'zhuan_qiang': 7, 'chang_yu': 8,
-               'jin_zi': 6,
-               'zong_he': 9}
-
-        hd = c.historydata_set.create(data=json.dumps(data1), start_date=start_date1)
-        pd = c.predictdata_set.create(data=json.dumps(data2), start_date=start_date2)
-        c.stockindex_set.create(ri_qi=row['ri_qi'],zi_jin=row['zi_jin'],qiang_du=row['qiang_du'],feng_xian=row['feng_xian'],
-                zhuan_qiang=row['zhuan_qiang'],chang_yu=row['chang_yu'],jin_zi=row['jin_zi'],zong_he=row['zong_he'])
-        c.stockindex_set.create(ri_qi=row2['ri_qi'], zi_jin=row2['zi_jin'], qiang_du=row2['qiang_du'],
-                                feng_xian=row2['feng_xian'],
-                                zhuan_qiang=row2['zhuan_qiang'], chang_yu=row2['chang_yu'], jin_zi=row2['jin_zi'],
-                                zong_he=row2['zong_he'])
-        c.stockindex_set.create(ri_qi=row3['ri_qi'], zi_jin=row3['zi_jin'], qiang_du=row3['qiang_du'],
-                                feng_xian=row3['feng_xian'],
-                                zhuan_qiang=row3['zhuan_qiang'], chang_yu=row3['chang_yu'], jin_zi=row3['jin_zi'],
-                                zong_he=row3['zong_he'])
+        cp = create_company(stock_code="000651", name="格力电器")
+        hist_data,pred_data = create_last_hist_predict_data(cp)
+        stock_index = create_stock_index(cp)
 
         url = reverse('stock_predict:predict')
-        response = self.client.post(url, data={"stock_code": c.stock_code})
+        response = self.client.post(url, data={"stock_code": cp.stock_code})
         self.assertEquals(response.status_code, 200)
-        self.assertContains(response,data1)
-        self.assertContains(response,data2)
-
-'''
+        self.assertContains(response,str(hist_data[0][0]))
+        self.assertContains(response,str(pred_data[0][0]))
+        self.assertContains(response,stock_index.ri_qi)
+        self.assertContains(response,stock_index.zi_jin)
+        self.assertContains(response,stock_index.jin_zi)
+        self.assertContains(response,stock_index.zong_he)

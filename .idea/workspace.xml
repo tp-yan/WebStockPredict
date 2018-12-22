@@ -4,23 +4,15 @@
     <list default="true" id="2994abc8-5baf-4237-83a4-d45792092108" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.coverage" beforeDir="false" afterPath="$PROJECT_DIR$/.coverage" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LSTMPredictStock/core/get_stocks_data.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_core_data_processor_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_core_data_processor_py.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_core_get_domestic_hist_stock_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_core_get_domestic_hist_stock_py.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_core_model_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_core_model_py.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_run_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/LSTMPredictStock_run_py.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htmlcov/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htmlcov/status.json" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/status.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htmlcov/stock_predict_add_companies_to_db_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/stock_predict_add_companies_to_db_py.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htmlcov/stock_predict_models_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/stock_predict_models_py.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htmlcov/stock_predict_tests_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/stock_predict_tests_py.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htmlcov/stock_predict_views_py.html" beforeDir="false" afterPath="$PROJECT_DIR$/htmlcov/stock_predict_views_py.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_predict/add_companies_to_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/add_companies_to_db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_predict/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_predict/static/stock_predict/js/draw_charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/static/stock_predict/js/draw_charts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stock_predict/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_predict/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/stock_predict/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +38,7 @@
           <entry key="html" value="1" />
           <entry key="js" value="1" />
           <entry key="md" value="1" />
-          <entry key="py" value="25" />
+          <entry key="py" value="26" />
           <entry key="sqlite3" value="1" />
         </counts>
       </usages-collector>
@@ -56,23 +48,23 @@
           <entry key="JavaScript" value="1" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="25" />
+          <entry key="Python" value="26" />
           <entry key="SQL" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="424" />
+          <entry key="Python Console" value="576" />
           <entry key="html" value="256" />
           <entry key="js" value="768" />
-          <entry key="py" value="5038" />
+          <entry key="py" value="5490" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="256" />
           <entry key="JavaScript" value="768" />
-          <entry key="Python" value="5462" />
+          <entry key="Python" value="6066" />
         </counts>
       </usages-collector>
     </session>
@@ -82,13 +74,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/stock_predict/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="93" column="11" lean-forward="true" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
+            <state relative-caret-position="378">
+              <caret line="255" lean-forward="true" selection-start-line="255" selection-end-line="255" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1545460892581" expanded="true" signature="3341:4019" ph="..." />
-                <marker date="1545460892581" expanded="true" signature="6583:6972" ph="..." />
-                <marker date="1545460892581" expanded="true" signature="7007:7012" ph="..." />
+                <marker date="1545463464366" expanded="true" signature="3341:4021" ph="..." />
+                <marker date="1545463464366" expanded="true" signature="7737:8149" ph="..." />
+                <marker date="1545463464366" expanded="true" signature="9071:9076" ph="..." />
               </folding>
             </state>
           </provider>
@@ -97,8 +89,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stock_predict/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
+            <state relative-caret-position="160">
+              <caret line="68" column="21" lean-forward="true" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
                 <marker date="1545460640920" expanded="true" signature="2036:2789" ph="..." />
@@ -129,11 +121,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stock_predict/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
+            <state relative-caret-position="272">
+              <caret line="19" column="11" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="11" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1545455231425" expanded="true" signature="225:659" ph="..." />
+                <marker date="1545462411148" expanded="true" signature="225:660" ph="..." />
               </folding>
             </state>
           </provider>
@@ -161,9 +153,9 @@
         <option value="$PROJECT_DIR$/stock_predict/get_stock_index.py" />
         <option value="$PROJECT_DIR$/stock_predict/templates/stock_predict/home.html" />
         <option value="$PROJECT_DIR$/stock_predict/static/stock_predict/js/draw_charts.js" />
-        <option value="$PROJECT_DIR$/stock_predict/models.py" />
         <option value="$PROJECT_DIR$/stock_predict/add_companies_to_db.py" />
         <option value="$PROJECT_DIR$/stock_predict/views.py" />
+        <option value="$PROJECT_DIR$/stock_predict/models.py" />
         <option value="$PROJECT_DIR$/stock_predict/tests.py" />
       </list>
     </option>
@@ -298,7 +290,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32907802" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32907802" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4993395" visible="true" weight="0.3177305" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4993395" visible="true" weight="0.33475178" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5006605" side_tool="true" weight="0.27659574" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.2567376" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -426,17 +418,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stock_predict/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="36" column="23" lean-forward="true" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <marker date="1545455231425" expanded="true" signature="225:659" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/LSTMPredictStock/run.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -444,10 +425,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Anaconda3/envs/MachineLearning/Lib/site-packages/django/db/models/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="504" column="8" selection-start-line="504" selection-start-column="8" selection-end-line="504" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stock_predict/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" column="11" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <marker date="1545462411148" expanded="true" signature="225:660" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/stock_predict/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
+        <state relative-caret-position="160">
+          <caret line="68" column="21" lean-forward="true" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
             <marker date="1545460640920" expanded="true" signature="2036:2789" ph="..." />
@@ -458,13 +457,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/stock_predict/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="93" column="11" lean-forward="true" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
+        <state relative-caret-position="378">
+          <caret line="255" lean-forward="true" selection-start-line="255" selection-end-line="255" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <marker date="1545460892581" expanded="true" signature="3341:4019" ph="..." />
-            <marker date="1545460892581" expanded="true" signature="6583:6972" ph="..." />
-            <marker date="1545460892581" expanded="true" signature="7007:7012" ph="..." />
+            <marker date="1545463464366" expanded="true" signature="3341:4021" ph="..." />
+            <marker date="1545463464366" expanded="true" signature="7737:8149" ph="..." />
+            <marker date="1545463464366" expanded="true" signature="9071:9076" ph="..." />
           </folding>
         </state>
       </provider>

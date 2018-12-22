@@ -19,6 +19,7 @@ class StockIndex(models.Model):
     jin_zi = models.IntegerField(default=0)
     zong_he = models.IntegerField(default=0)
 
+
 class HistoryData(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     data = models.TextField() # 字符串类型
