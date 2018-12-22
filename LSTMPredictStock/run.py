@@ -187,6 +187,7 @@ def format_predictions(predictions):    # 给预测数据添加对应日期
 
     return date_predict
 
+'''
 def main(stock_code, train=False, predict=False):
     configs = json.load(open(get_config_path(), 'r'))
     companies = configs['companies']
@@ -206,7 +207,7 @@ def main(stock_code, train=False, predict=False):
             return prediction(stock_code=stock_code, real=True, pre_len=20)
         else:
             return -2  # 该公司还没有训练模型
-
+'''
     # 二维数组：[[data,value],[...]]
 def get_hist_data(stock_code, recent_day=30):  # 获取某股票，指定天数的历史close数据,包含日期
     get_single_last_data(stock_code)
@@ -253,7 +254,7 @@ def get_parent_dir():   # 当前文件的父目录绝对路径
     return os.path.dirname(__file__)
 
 
-if __name__ == '__main__':
-    # get_all_last_data("2010-01-01") # 先获得最新数据
-    train_all_stock()
-    # predict_all_stock()
+# if __name__ == '__main__':
+#     # get_all_last_data("2010-01-01") # 先获得最新数据
+#     train_all_stock()
+#     # predict_all_stock()

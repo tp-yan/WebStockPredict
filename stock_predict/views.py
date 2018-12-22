@@ -77,7 +77,6 @@ def get_stock_index(stock_code):
     """
     获取股票的各项指标数据
     """
-    indexs = None
     company = get_object_or_404(Company, stock_code=stock_code)
     if company.stockindex_set.count() <= 0:
         # 将爬取的数据存入数据库

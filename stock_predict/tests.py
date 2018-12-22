@@ -5,10 +5,9 @@ from django.http import Http404
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import Company, HistoryData, PredictData
-from .views import get_hist_predict_data
+from .models import Company, HistoryData, PredictData, StockIndex
+from .views import get_hist_predict_data,get_crawl_save_data
 from .add_companies_to_db import add_company
-
 
 class HistoryDataModelTests(TestCase):
     def test_set_data_with_not_list(self):
@@ -253,3 +252,21 @@ class PredictStockAction(TestCase):
         self.assertContains(response,stock_index.zi_jin)
         self.assertContains(response,stock_index.jin_zi)
         self.assertContains(response,stock_index.zong_he)
+
+
+class FuncGetCrawlSaveData(TestCase):
+    """
+    测试方法 get_crawl_save_data
+    """
+    def test_get_crawl_save_data(self):
+        """
+        测试调用该方法，数据库增加了 StockIndex 数据
+        """
+        stock_codes = {"600718":"东软集团","000651":"格力电器","600839":"四川长虹","600320":"振华重工","601988":"中国银行",
+                 "000066": "中国长城","601766":"中国中车","601390":"中国中铁","000768":"中航飞机","000063":"中兴通讯"}
+        for code,name in stock_codes.items():
+            create_company(stock_code=code,name=name)
+        self.assertEquals(StockIndex.objects.count(),0)
+        get_crawl_save_data()
+        self.assertGreater(StockIndex.objects.count(),0)
+
