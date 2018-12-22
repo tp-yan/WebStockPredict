@@ -16,13 +16,17 @@ def getHTMLText(url):
     try:
         #账号密码15520452757
         #cookie={'Cookie':'UM_ distinctid= ;PHPSESSID=;CNZZDATA1256448133=; amvid = '}
-        
-        cookie={'Cookie':'UM_ distinctid= 167d389bc12988-061b3bd552ce1c-4d045769-1fa400-167d389bc13bec;PHPSESSID=3hgnsm2gm1lflj4eajve9abmf0;CNZZDATA1256448133=910336781-1545439520-http%253A%252F%252Fwww.gpdatacat.com%252F%7C1545451867; amvid = 8ae8715d4f2b52a2694e97b76aa06efd'}
+        UM_distinctid = "UM_distinctid=" + "167d4244a665d3-0bc7b9a22f42f1-4313362-144000-167d4244a67440;"
+        PHPSESSID = "PHPSESSID=" + "4j67ed7bo6ogs6ntjmo3fb62n4;"
+        CNZZDATA1256448133 = "CNZZDATA1256448133=" + "1846506456-1545449269-%7C1545479258;"
+        amvid = "amvid=" + "6447ffafff063060f1a560d94128a33f"
+        cookie={'Cookie':UM_distinctid+PHPSESSID+CNZZDATA1256448133+amvid}
         r = requests.get(url, headers=cookie, timeout = 30)
         r.raise_for_status()
         r.encoding = r.apparent_encoding
         return r.text
     except:
+        print("登录数据猫失败！")
         return ""
 
 def fillUnivList(ulist, html):
@@ -30,7 +34,7 @@ def fillUnivList(ulist, html):
     #print(soup.text)
     #print(soup.find_all('tbody'))
     #print(soup.find_all(id='alldatatablelg')) #alldatatablelg
-    
+
     table  = soup.find_all(id='alldatatablelg')[0]
     tbody = table.find_all('tbody')[0] 
     for tr in tbody.find_all('tr'):
@@ -45,11 +49,13 @@ def printUnivList(ulist, stockcode, num):
     #tplt = "{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}"
     #时间 综合 强度 资金 预期 转强 长预 近资 风险
     #print("时间   综合    强度     资金    转强    长预     近资    风险")
-    shares = []   
+    shares = []
     parent_dir = os.path.dirname(__file__)  # 父目录
     file_dir = os.path.join(parent_dir,"stock_index/")
-    
-    with open(os.path.join(file_dir,stockcode+'.csv'), 'w', newline='') as csvfile:
+    if not os.path.exists(file_dir):
+        os.mkdir(file_dir)
+    file_path = os.path.join(file_dir,stockcode+'.csv')
+    with open(file_path, 'w', newline='') as csvfile:
         spamwriter = csv.writer(csvfile, delimiter=',',
                             quotechar='\n', quoting=csv.QUOTE_MINIMAL)
         spamwriter.writerow(['ri_qi', 'zong_he', 'qiang_du', 'zi_jin', 'zhuan_qiang', 'chang_yu', 'jin_zi', 'feng_xian'])
@@ -59,15 +65,19 @@ def printUnivList(ulist, stockcode, num):
             dict = {'ri_qi': u[0], 'zong_he': u[1], 'qiang_du': u[2], 'zi_jin': u[3], 'zhuan_qiang': u[4], 'chang_yu': u[5], 'jin_zi': u[6], 'feng_xian': u[7]} 
             shares.append(dict)
             spamwriter.writerow(u)
-    
-    
+        print(file_path,"保存！")
+
+
 def main(stockcode):
     uinfo = []
     url = 'http://www.gpdatacat.com/index.php?r=stock%2Fview&stockcode=' + stockcode
     html = getHTMLText(url)
+    if html == "":
+        print("登录数据猫失败")
+        return
     fillUnivList(uinfo, html)
     printUnivList(uinfo, stockcode, 10)  #10个日期，最大取值为50
-    
+
 main('000063')#中兴通讯
 main('000066')#中国长城
 main('000651')#格力电器
