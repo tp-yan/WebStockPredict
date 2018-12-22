@@ -11,7 +11,6 @@ function draw_chart(m_data,div_id,m_title){
         title: {
                 text: companies[stock_code]+"("+stock_code+")" + m_title,
                 textStyle:{
-                //字体大小
         　　　　  fontSize:15
                 }
             },
@@ -24,24 +23,25 @@ function draw_chart(m_data,div_id,m_title){
         },
         yAxis: {
             type: 'value',
-//            name:'单位：元',
             axisLabel : {
                 formatter: '{value} 元'
-            }
+            },
         },
         series: [
             {
-//            name: '价格',
             data: [],   // x坐标对应y值
             type: 'line',
-            // 显示数值
-//            itemStyle: { normal: {label : {show: true}}}
+            label: {
+                    normal: {
+                        show: true,
+                        position: 'top'
+                    }
+                },
             },
         ]
     };
 
     var min,max ;
-
     for(var i = 0 ; i < m_data.length; i++){
         var one_day = m_data[i];
         option['xAxis']['data'].push(one_day[0])
@@ -65,17 +65,203 @@ function draw_chart(m_data,div_id,m_title){
 }
 
 
+//绘制雷达图
+function draw_radar(){
+    var radar = echarts.init(document.getElementById('radar'));
+    var option = {
+        title : {
+            text: '近3个交易日综合评分',
+            subtext:'综合评分' + (indexs[0]['zong_he']/11.0*10).toFixed(1),
+            subtextStyle : {
+            color :'red',
+            fontStyle :'normal',
+            fontWeight :'bold',
+            fontFamily :'sans-serif',
+            fontSize :'16'
+            },
+            itemGap:20,
+            padding:[0,15,15,15]
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            x : 'center',
+            data:[indexs[0]['ri_qi'],indexs[1]['ri_qi'],indexs[2]['ri_qi']]  //此处为legend名字，须与series的data每个name相同
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        polar : [
+            {
+                indicator : [
+                    {text : '资金', max  : 11},
+                    {text : '强度', max  : 11},
+                    {text : '风险', max  : 11},
+                    {text : '转强', max  : 11},
+                    {text : '长预', max  : 11},
+                    {text : '近资', max  : 11}
+                ],
+                radius : 130
+            }
+        ],
+        series : [
+            {
+                name: '各交易日数据对比',   //数据视图显示的标题
+                type: 'radar',
+                itemStyle: {
+                    normal: {
+                        areaStyle: {
+                            type: 'default'
+                        }
+                    }
+                },
+                data : [
+                    {
+                        value : [9, 4, 8, 9, 9, 8],
+                        name : '12-09',
+                         //在拐点处显示数值
+                        label: {
+                            normal: {
+                            show: true,
+                            formatter: (params)=>{
+                                return params.value
+                               },
+                            },
+                        }
+                    },
+                    {
+                        value : [9, 3, 7, 9, 8, 9],
+                        name : '12-11',
+                         label: {
+                            normal: {
+                            show: true,
+                            formatter: (params)=>{
+                                return params.value
+                               },
+                            },
+                        }
+                    },
+                    {
+                        value : [9, 3, 7, 9, 8, 9],
+                        name : '12-12',
+                         label: {
+                            normal: {
+                            show: true,
+                            formatter: (params)=>{
+                                return params.value
+                               },
+                            },
+                        }
+                    }
+                ]
+            }
+        ]
+    };
+
+    for(var i = 0 ; i < 3;i++){
+        option['series'][0]['data'][i]['value'] = [];
+        option['series'][0]['data'][i]['value'].push(indexs[i]['zi_jin']);
+        option['series'][0]['data'][i]['value'].push(indexs[i]['qiang_du']);
+        option['series'][0]['data'][i]['value'].push(indexs[i]['feng_xian']);
+        option['series'][0]['data'][i]['value'].push(indexs[i]['zhuan_qiang']);
+        option['series'][0]['data'][i]['value'].push(indexs[i]['chang_yu']);
+        option['series'][0]['data'][i]['value'].push(indexs[i]['jin_zi']);
+        option['series'][0]['data'][i]['name'] = indexs[i]['ri_qi'];
+    }
+    radar.setOption(option);
+}
+
+
 if(recent_data != null){
-    draw_chart(recent_data,'history','过去30天股票数据');
+    draw_chart(recent_data,'history','过去20天股票数据');
 }
 
 if(predict_data != null){
     draw_chart(predict_data,'future','未来10天股票数据');
 }
 
-var ops = document.getElementById(stock_code)
-ops.selected = true
-console.log(ops.value)
+var ops = document.getElementById(stock_code);
+ops.selected = true;
 
+if(indexs != null){
+    draw_radar();
+}
 
+/*
+console.log(indexs[0]);
+console.log(indexs[1]);
+console.log(indexs[2]);
+function test(){
+    var test = echarts.init(document.getElementById('test'));
+    var option = {
+            title : {
+                text: '罗纳尔多 vs 舍普琴科',
+                subtext: '完全实况球员数据'
+            },
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                x : 'center',
+                data:['罗纳尔多','舍普琴科']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            calculable : true,
+            polar : [
+                {
+                    indicator : [
+                        {text : '进攻', max  : 100},
+                        {text : '防守', max  : 100},
+                        {text : '体能', max  : 100},
+                        {text : '速度', max  : 100},
+                        {text : '力量', max  : 100},
+                        {text : '技巧', max  : 100}
+                    ],
+                    radius : 130
+                }
+            ],
+            series : [
+                {
+                    name: '完全实况球员数据',
+                    type: 'radar',
+                    itemStyle: {
+                        normal: {
+                            areaStyle: {
+                                type: 'default'
+                            }
+                        }
+                    },
+                    data : [
+                        {
+                            value : [97, 42, 88, 94, 90, 86],
+                            name : '舍普琴科'
+                        },
+                        {
+                            value : [97, 32, 74, 95, 88, 92],
+                            name : '罗纳尔多'
+                        }
+                    ]
+                }
+            ]
+        };
+    test.setOption(option);
+}
+test();
+*/
 
