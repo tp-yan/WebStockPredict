@@ -5,9 +5,11 @@ from django.http import Http404
 from django.test import TestCase
 from django.urls import reverse
 
+from LSTMPredictStock import run
 from .models import Company, HistoryData, PredictData, StockIndex
 from .views import get_hist_predict_data,get_crawl_save_data
 from .add_companies_to_db import add_company
+from apscheduler.scheduler import Scheduler
 
 class HistoryDataModelTests(TestCase):
     def test_set_data_with_not_list(self):
@@ -269,4 +271,23 @@ class FuncGetCrawlSaveData(TestCase):
         self.assertEquals(StockIndex.objects.count(),0)
         get_crawl_save_data()
         self.assertGreater(StockIndex.objects.count(),0)
+
+class TrainAllModel(TestCase):
+    def test_train_all_models(self):
+        """
+        测试训练所有的模型
+        """
+        self.assertEquals(run.train_all_stock(),0)
+
+class PredictAllData(TestCase):
+    def test_predict_all(self):
+        """
+        测试预测所有数据的方法
+        """
+        self.assertIsNotNone(run.predict_all_stock())
+
+# sched = Scheduler()
+
+
+
 
