@@ -8,6 +8,28 @@ class Company(models.Model):
     stock_code = models.CharField(max_length=20)
     name = models.CharField(max_length=100)
 
+class StockIndex(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    ri_qi = models.CharField(max_length=30)
+    zi_jin = models.IntegerField(default=0)
+    qiang_du = models.IntegerField(default=0)
+    feng_xian = models.IntegerField(default=0)
+    zhuan_qiang = models.IntegerField(default=0)
+    chang_yu = models.IntegerField(default=0)
+    jin_zi = models.IntegerField(default=0)
+    zong_he = models.IntegerField(default=0)
+
+    def set_fields(self,fields):
+        ri_qi = fields['ri_qi']
+        zi_jin = fields['zi_jin']
+        qiang_du = fields['qiang_du']
+        feng_xian = fields['feng_xian']
+        zhuan_qiang = fields['zhuan_qiang']
+        chang_yu = fields['chang_yu']
+        jin_zi = fields['jin_zi']
+        zong_he = fields['zong_he']
+
+
 class HistoryData(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     data = models.TextField() # 字符串类型

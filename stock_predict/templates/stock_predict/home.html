@@ -14,6 +14,8 @@
             var recent_data = stock_data['recent_data'];
             var stock_code = stock_data['stock_code'];
             var predict_data = stock_data['predict_data'];
+            var indexs = null;
+            indexs = stock_data['indexs']
         {% endif %}
         console.log(stock_data);
 </script>
@@ -41,6 +43,8 @@
     <div style="width:100%;height:400px;margin-top:50px;">
         <div id="history" style="float:left;width: 60%;height:450px;"></div>
         <div id="future" style="float:left;width: 40%;;height:450px;"></div>
+        <div id="radar" style="width:50%;height:600px;"></div>
+        <div id="test" style="width:50%;height:600px;"></div>
     </div>
 </center>
 <script src="{% static 'stock_predict/js/draw_charts.js' %}"></script>

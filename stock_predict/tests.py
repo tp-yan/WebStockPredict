@@ -33,14 +33,7 @@ class HistoryDataModelTests(TestCase):
             hd.set_data(list_data=123)
         except Exception as e:
             self.assertEquals(e.args[0], "list_data must be 2 dimensions list.")  # e.args:tuple
-        try:
-            hd.set_data(list_data='data')
-        except Exception as e:
-            self.assertEquals(e.args[0], "list_data must be 2 dimensions list.")  # e.args:tuple
-        try:
-            hd.set_data(list_data=["2018-01-12", 90])
-        except Exception as e:
-            self.assertEquals(e.args[0], "list_data must be 2 dimensions list.")  # e.args:tuple
+
 
     def test_set_data(self):
         """
@@ -76,14 +69,7 @@ class PredictDataModelTests(TestCase):
             pd.set_data(list_data=123)
         except Exception as e:
             self.assertEquals(e.args[0], "list_data must be 2 dimensions list.")  # e.args:tuple
-        try:
-            pd.set_data(list_data='data')
-        except Exception as e:
-            self.assertEquals(e.args[0], "list_data must be 2 dimensions list.")  # e.args:tuple
-        try:
-            pd.set_data(list_data=["2018-01-12", 90])
-        except Exception as e:
-            self.assertEquals(e.args[0], "list_data must be 2 dimensions list.")  # e.args:tuple
+
 
     def test_set_data(self):
         """
@@ -122,19 +108,19 @@ class HistPredictDataFun(TestCase):
         except Http404 as e:
             self.assertEquals(e.args[0],"No Company matches the given query.")
 
-    # def test_get_data_not_exist_in_db(self):
-    #     """
-    #     指定股票代码的历史数据和预测数据，在数据库中没有记录时，从API获取历史数据，并使用模型预测数据
-    #     最后将它们存入数据库
-    #     """
-    #     c = create_company(stock_code="000063",name="中华")
-    #     re_data,pre_data = get_hist_predict_data(stock_code=c.stock_code)
-    #     self.assertNotEquals(re_data,None)
-    #     self.assertNotEquals(pre_data,None)
-    #     self.assertEquals(re_data,c.historydata_set.first().get_data())
-    #     self.assertEquals(pre_data,c.predictdata_set.first().get_data())
-    #     self.assertGreater(HistoryData.objects.count(),0)
-    #     self.assertGreater(PredictData.objects.count(),0)
+    def test_get_data_not_exist_in_db(self):
+        """
+        指定股票代码的历史数据和预测数据，在数据库中没有记录时，从API获取历史数据，并使用模型预测数据
+        最后将它们存入数据库
+        """
+        c = create_company(stock_code="000063",name="中华")
+        re_data,pre_data = get_hist_predict_data(stock_code=c.stock_code)
+        self.assertNotEquals(re_data,None)
+        self.assertNotEquals(pre_data,None)
+        self.assertEquals(re_data,c.historydata_set.first().get_data())
+        self.assertEquals(pre_data,c.predictdata_set.first().get_data())
+        self.assertGreater(HistoryData.objects.count(),0)
+        self.assertGreater(PredictData.objects.count(),0)
 
     def test_get_data_exist_in_db(self):
         """
@@ -174,4 +160,29 @@ class HomeView(TestCase):
         self.assertContains(response,data2)
 
 class PredictStockAction(TestCase):
-    pass
+    def test_predict_not_exist_stock(self):
+        """
+        预测不存在的股票代码，返回404
+        """
+        url = reverse('stock_predict:predict')
+        response = self.client.post(url,data={"stock_code":"000000"})
+        self.assertEquals(response.status_code,404)
+
+    def test_predict_stock(self):
+        """
+        输入正确的股票代码，显示相应的图表
+        """
+        c = create_company(stock_code="000651", name="格力电器")
+        data1 = r"[['2018-02-12',19],['2018-02-13',20.1]]"
+        start_date1 = r'2018-02-12'
+        data2 = r"[['2018-02-14',20.5],['2018-02-15',21.1]]"
+        start_date2 = r'2018-02-14'
+        hd = c.historydata_set.create(data=json.dumps(data1), start_date=start_date1)
+        pd = c.predictdata_set.create(data=json.dumps(data2), start_date=start_date2)
+
+        url = reverse('stock_predict:predict')
+        response = self.client.post(url, data={"stock_code": c.stock_code})
+        self.assertEquals(response.status_code, 200)
+        self.assertContains(response,data1)
+        self.assertContains(response,data2)
+
