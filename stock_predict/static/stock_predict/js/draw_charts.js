@@ -131,7 +131,7 @@ function draw_radar(){
                         label: {
                             normal: {
                             show: true,
-                            formatter: (params)=>{
+                            formatter: function(params){
                                 return params.value
                                },
                             },
@@ -143,7 +143,7 @@ function draw_radar(){
                          label: {
                             normal: {
                             show: true,
-                            formatter: (params)=>{
+                            formatter: function(params){
                                 return params.value
                                },
                             },
@@ -155,7 +155,7 @@ function draw_radar(){
                          label: {
                             normal: {
                             show: true,
-                            formatter: (params)=>{
+                            formatter: function(params){
                                 return params.value
                                },
                             },
