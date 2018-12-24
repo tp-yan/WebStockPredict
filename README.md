@@ -14,7 +14,7 @@
 
 ## 运行项目
 ### 环境要求
-如果只运行web项目，则只需安装如下：
+如果只运行web项目，则只需安装如下包：
 + python 3.6.x
 + django 2.1.4
 + pandas 0.23.4
@@ -22,8 +22,8 @@
 
 如果需要训练模型或者使用模型来预测(注：需要保证本机拥有 NVIDIA GPU以及显卡驱动)，则还需要安装：
 + tensorflow-gpu 1.10.0
-+ cudnn 7.1.4
-+ cudatoolkit 9.0 
++ cudatoolkit 9.0 （根据自己本机的显卡型号决定，请去NVIDIA官网查看）
++ cudnn 7.1.4 （版本与cudatoolkit9.0对应的，请它版本请去NVIDIA官网查看对应的cudatoolkit版本）
 + keras 2.2.2
 + matplotlib 2.2.2 
 
@@ -67,7 +67,7 @@ Quit the server with CTRL-BREAK.
 在` model.load_model(file_path)`这里恢复了模型。它默认使用每个公司近30天的历史数据作为模型输入来得到pre_len天的预测数据
 
 
-### 测试
+### 项目测试
 #### 单元测试
 使用django自带的测试工具来实现单元测试，测试程序位于stock_predict/test.py，在控制台根目录下使用命令`python manage.py test stock_predict'
 来运行test.py
@@ -79,3 +79,14 @@ Quit the server with CTRL-BREAK.
 ![coverage_index](/display_img/coverage_index.png "集成测试")
 
 
+### 本机硬软件环境
++ win10-64bit
++ NVIDIA GeForce GTX1060
++ NVIDIA显卡驱动版本：391.24
+
+### 参考
+[LSTM-Neural-Network-for-Time-Series-Prediction](https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction)
+
+[数据接口-免费版（股票数据API）](https://blog.csdn.net/llingmiao/article/details/79941066)
+
+[数据接口-免费版（股票数据API）](https://blog.csdn.net/llingmiao/article/details/79941066)
