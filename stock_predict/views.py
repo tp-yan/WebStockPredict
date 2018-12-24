@@ -100,7 +100,6 @@ def predict_stock_action(request):
     data['indexs'] = get_stock_index(stock_code)
     return render(request, "stock_predict/home.html", {"data": json.dumps(data)})  # json.dumps(list)
 
-'''
 sched = Scheduler()
 # 定时任务
 # @sched.interval_schedule(seconds=2)   # 每2s执行一次
@@ -109,4 +108,3 @@ def train_models():
     run.train_all_stock()
 
 sched.start()
-'''

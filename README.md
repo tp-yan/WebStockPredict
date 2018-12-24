@@ -32,11 +32,27 @@ Django version 2.1.4, using settings 'WebStockPredict.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CTRL-BREAK.
 ```
-此时在浏览器中输入：`http://http://127.0.0.1:8000/stock_predict/home/`即可访问应用，可以选择。
+此时在浏览器中输入：`http://http://127.0.0.1:8000/stock_predict/home/`即可访问应用，通过下拉框选择查看某个公司过去20天的历史股票数据和未来10天的预测数据。
 ![home page](/display_img/home.png "股票预测系统首页")
 
-## 数据说明
+## 数据
 本项目为了演示方便，只使用了10个公司的股票数据来进行模型训练，实际上可以依据个人需求，训练成百上千个公司的数据。
-获取国内上市公司历史股票数据来源于网易的API：'http://quotes.money.163.com/service/chddata.html'，
-详细使用请参考[数据接口-免费版（股票数据API）](https://blog.csdn.net/llingmiao/article/details/79941066)
+*注：这个项目只是用来演示，并不保证预测的真实性，请勿用于真实炒股*
 
+### 数据来源
+获取国内上市公司历史股票数据来源于网易的API：'http://quotes.money.163.com/service/chddata.html'，
+详细使用请参考[数据接口-免费版（股票数据API）](https://blog.csdn.net/llingmiao/article/details/79941066)。
+在LSTMPredictStock/core/get_domestic_hist_stock.py 中`get_domestic_stock(sticker_code, start_date, end_date):`
+函数用于获取10个公司起始至终止日期的股票数据，并以csv格式保存在 LSTMPredictStock/data下。csv格式方便用pandas读取，输入到LSTM神经网络模型，
+用于训练模型以及预测股票数据。
+
+### 训练模型
+1. 调用run.py中的`train_all_stock`，它首先会调用`get_all_last_data(start_date="2010-01-01")`方法获得10个公司从2010年至今年的历史数据
+2. 接着调用的`train_model(stock_code, predict=False)`方法基于上述数据来训练模型，若predict=True，则在训练完后会进行模型正确性的验证，
+主要是通过绘图方式来对比预测数据与真实数据之间的吻合度
+3. 并分别将10个公司的训练好的模型保存于LSTMPredictStock/saved_models下（'xxx.h5'格式），用于后续恢复模型来预测数据
+
+### 预测股票数据
+1. 调用run.py中的`predict_all_stock(pre_len=10)`来对10个公司的股票进行预测，pre_len指定预测的天数，默认是10天。
+2. 上一步调用的函数实际上调用了`prediction(stock_code, real=True, pre_len=30, plot=False)`来完成预测。
+在` model.load_model(file_path)`这里恢复了模型。它默认使用每个公司近30天的历史数据作为模型输入来得到pre_len天的预测数据

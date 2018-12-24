@@ -254,7 +254,6 @@ def get_parent_dir():   # 当前文件的父目录绝对路径
     return os.path.dirname(__file__)
 
 
-# if __name__ == '__main__':
-#     # get_all_last_data("2010-01-01") # 先获得最新数据
-#     train_all_stock()
-#     # predict_all_stock()
+if __name__ == '__main__':
+    train_all_stock()
+    predict_all_stock()

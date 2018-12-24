@@ -8,7 +8,7 @@ def get_domestic_stock(sticker_code, start_date, end_date):
     # 从网易接口获取数据
     api_adr = 'http://quotes.money.163.com/service/chddata.html'
     fields = "TOPEN;TCLOSE;HIGH;LOW;VOTURNOVER"
-
+    # 注意：获取上海证券与深圳证券股票的数据，需要构造不同的URL
     tag = "0"   # 上海证券
     if sticker_code in ['000063','000066','000768','000651']:
         tag = "1"   # 深圳证券
