@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2994abc8-5baf-4237-83a4-d45792092108" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +53,7 @@
           <entry key="Python Console" value="640" />
           <entry key="html" value="260" />
           <entry key="js" value="779" />
-          <entry key="md" value="3533" />
+          <entry key="md" value="3539" />
           <entry key="py" value="6572" />
           <entry key="txt" value="7" />
         </counts>
@@ -63,7 +62,7 @@
         <counts>
           <entry key="HTML" value="260" />
           <entry key="JavaScript" value="779" />
-          <entry key="Markdown" value="3533" />
+          <entry key="Markdown" value="3539" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="Python" value="7212" />
         </counts>
@@ -76,8 +75,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="346">
-                <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+              <first_editor relative-caret-position="363">
+                <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
               </first_editor>
               <second_editor />
             </state>
@@ -196,6 +195,11 @@
             <path>
               <item name="WebStockPredict" type="b2602c69:ProjectViewProjectNode" />
               <item name="WebStockPredict" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WebStockPredict" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WebStockPredict" type="462c0819:PsiDirectoryNode" />
+              <item name="stock_predict" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -536,8 +540,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="346">
-            <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+          <first_editor relative-caret-position="363">
+            <caret line="90" lean-forward="true" selection-start-line="90" selection-end-line="90" />
           </first_editor>
           <second_editor />
         </state>

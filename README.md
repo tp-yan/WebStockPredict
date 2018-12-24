@@ -88,5 +88,3 @@ Quit the server with CTRL-BREAK.
 [LSTM-Neural-Network-for-Time-Series-Prediction](https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction)
 
 [数据接口-免费版（股票数据API）](https://blog.csdn.net/llingmiao/article/details/79941066)
-
-[数据接口-免费版（股票数据API）](https://blog.csdn.net/llingmiao/article/details/79941066)
