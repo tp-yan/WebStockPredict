@@ -3,6 +3,15 @@
 股票预测模型是使用[jaungiers](https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction)提出的一种LSTM Neural Network模型。
 并使用以tensorflow作为backend的keras来搭建、训练模型
 
+## 目录说明
++ display_img:保存演示图片
++ htmlcov:使用coverage.py集成测试，自动生成的文件夹
++ LSTMPredictStock:包含了有关模型的一切，包括训练数据及其获取代码，模型搭建、训练的代码、训练好的模型以及关于该python包的配置文件config.json
++ stock_predict:基于django开发框架的Web app，包含了一个web应用的相关内容。
++ WebStockPredict:包含了对django project进行管理、配置的程序
++ db.sqlite3:此Web应用所需的数据就存放在sqlite3数据库中
++ manage.py:管理django project的快捷API
+
 ## 运行项目
 ### 环境要求
 如果只运行web项目，则只需安装如下：
@@ -56,3 +65,17 @@ Quit the server with CTRL-BREAK.
 1. 调用run.py中的`predict_all_stock(pre_len=10)`来对10个公司的股票进行预测，pre_len指定预测的天数，默认是10天。
 2. 上一步调用的函数实际上调用了`prediction(stock_code, real=True, pre_len=30, plot=False)`来完成预测。
 在` model.load_model(file_path)`这里恢复了模型。它默认使用每个公司近30天的历史数据作为模型输入来得到pre_len天的预测数据
+
+
+### 测试
+#### 单元测试
+使用django自带的测试工具来实现单元测试，测试程序位于stock_predict/test.py，在控制台根目录下使用命令`python manage.py test stock_predict'
+来运行test.py
+#### 集成测试
+如果想完成集成测试，则需要借助第三方库：coverage.py，可以通过`pip install coverage`安装，详情使用参考[coverage.py](https://pypi.org/project/coverage/)。
+1. 控制台在根目录WebStockPredict下，输入命令`coverage run --source='.' manage.py test stock_predict`来执行test.py
+2. 下一步输入`coverage report`命令，可以生成简易的测试报告
+3. 为了获得更详细的测试报告，可输入`coverage html`命令，其会在根目录下生成htmlcov文件夹，里面包含自动生成的html页面，点击index.html可查看整个项目以及各个文件的测试覆盖率，如下图：
+![coverage_index](/display_img/coverage_index.png "集成测试")
+
+
