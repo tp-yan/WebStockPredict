@@ -1,137 +1,42 @@
 # WebStockPredict
-基于Web的股票预测系统
+此project是基于django的web app。它能给出指定范围内公司(此处为10个)的历史股票数据与未来某段时间的预测数据以及对该股票的一些评价指标。
+股票预测模型是使用[jaungiers](https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction)提出的一种LSTM Neural Network模型。
+并使用以tensorflow作为backend的keras来搭建、训练模型
 
-标题：
-# 一级标题
-## 二级标题
-### 三级标题
-#### 四级标题
-##### 五级标题
-###### 六级标题（最多六级）
-注：一般#后面空一格
+## 运行项目
+### 环境要求
+如果只运行web项目，则只需安装如下：
++ python 3.6.x
++ django 2.1.4
++ pandas 0.23.4
++ numpy 1.15.2
 
-字体：
-**加粗**
-*斜体*
-***斜体加粗***
-~~删除线~~
+如果需要训练模型或者使用模型来预测(注：需要保证本机拥有 NVIDIA GPU以及显卡驱动)，则还需要安装：
++ tensorflow-gpu 1.10.0
++ cudnn 7.1.4
++ cudatoolkit 9.0 
++ keras 2.2.2
++ matplotlib 2.2.2 
 
-引用：
->这是引用文字
->>引用可以嵌套
->>>似乎>的个数不限
+### 使用django自带的服务器在本地运行
+首先你需要将此项目clone或者download到本地。然后在控制台，进入项目根目录即WebStockPredict(包含有manage.py的目录)，输入如下面命令，启动Web应用：
 
-分割线：三个或者三个以上的 - 或者 * 都可以
----
-----
-***
-*****
+`python manage.py runserver`
 
-图片:![图片alt](图片URL "图片title")
-图片alt就是显示在图片下面的文字，相当于对图片内容的解释。
-图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加
-
-![bock-china](https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/%20u=702257389,1274025419&fm=27&gp=0.jpg "区块链")
-
-注：上传本地图片直接点击导航栏的图片标志，选择图片即可
-
-超链接：[超链接名](超链接地址 "超链接title")  title可加可不加
-[简书](http://jiansu.com)
-[百度](http://baidu.com)
-注：Markdown本身语法不支持链接在新页面中打开,如果想要在新页面中打开的话可以用html语言的a标签代替。
-
-<a href="http://baidu.com" target="_blank">HTML标签a实现超链接</a>
-
-列表：
-无序列表用 - + * 任何一种都可以，注意：- + * 跟内容之间都要有一个空格
-- 无序列表1
-+ 无序列表2
-* 无序列表3
-
-有序列表：数字加点。注意：序号跟内容之间要有空格
-1. 有序列表1
-2. 有序列表2
-3. 有序列表3
-1. 有序列表4
-
-列表嵌套：上一级和下一级之间敲三个空格即可
-+ 一级无序   
-   + 二级无序
-   + 二级无序
-   + 二级无序
-+ 一级无序
-   + 二级无序   
-   + 二级无序   
-   + 二级无序
-   
-1. 一级有序1
-   1. 二级有序1  
-   2. 二级有序2  
-   3. 二级有序3
-2. 一级有序2
-   1. 二级有序1   
-   2. 二级有序2  
-   3. 二级有序3  
-   
-表格：
-表头|表头|表头
----|:--:|---:
-内容|内容|内容
-内容|内容|内容
-
-第二行分割表头和内容。
-- 有一个就行，为了对齐，多加了几个
-文字默认居左
--两边加：表示文字居中
--右边加：表示文字居右
-注：原生的语法两边都要用 | 包起来。
-
-
-|姓名|技能|排行|
-|---|---|---|
-|刘备|苦|大哥|
-|关羽|大|二哥|
-|张飞|吗|三弟|
-
-
-代码:
-单行代码：代码之间分别用一个反引号包起来
-
-`代码内容`
-`create database hero;`
-
-代码块：代码之间分别用三个反引号包起来，且两边的反引号单独占一行
-
+当控制台输出如下内容时，证明Web项目已成功启动:
 ```
-代码块
-代码块
-代码块
+Using TensorFlow backend.
+System check identified no issues (0 silenced).
+December 24, 2018 - 19:57:52
+Django version 2.1.4, using settings 'WebStockPredict.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
 ```
-```
-function fun(){
-         echo "这是一句非常牛逼的代码";
-    }
-    fun();
-```
+此时在浏览器中输入：`http://http://127.0.0.1:8000/stock_predict/home/`即可访问应用，可以选择。
+![home page](/display_img/home.png "股票预测系统首页")
 
-流程图：
-```flow
-st=>start: 开始
-op=>operation: My Operation
-cond=>condition: Yes or No?
-e=>end
-st->op->cond
-cond(yes)->e
-cond(no)->op
-&
-```
+## 数据说明
+本项目为了演示方便，只使用了10个公司的股票数据来进行模型训练，实际上可以依据个人需求，训练成百上千个公司的数据。
+获取国内上市公司历史股票数据来源于网易的API：'http://quotes.money.163.com/service/chddata.html'，
+详细使用请参考[数据接口-免费版（股票数据API）](https://blog.csdn.net/llingmiao/article/details/79941066)
 
-&amp;   
-&copy;
-&lt;
-
-ss&a
-
-AT&T
-
-4 < 5
