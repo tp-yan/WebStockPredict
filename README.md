@@ -1,7 +1,7 @@
 # WebStockPredict
 此project是基于django的web app。它能给出指定范围内公司(此处为10个)的历史股票数据与未来某段时间的预测数据以及对该股票的一些评价指标。
 股票预测模型是使用[jaungiers](https://github.com/jaungiers/LSTM-Neural-Network-for-Time-Series-Prediction)提出的一种LSTM Neural Network模型。
-并使用以tensorflow作为backend的keras来搭建、训练模型
+并使用以tensorflow作为backend的keras来搭建、训练模型。
 
 ## 目录说明
 + display_img:保存演示图片
@@ -23,10 +23,11 @@
 如果需要训练模型或者使用模型来预测(注：需要保证本机拥有 NVIDIA GPU以及显卡驱动)，则还需要安装：
 + tensorflow-gpu 1.10.0
 + cudatoolkit 9.0 （根据自己本机的显卡型号决定，请去NVIDIA官网查看）
-+ cudnn 7.1.4 （版本与cudatoolkit9.0对应的，请它版本请去NVIDIA官网查看对应的cudatoolkit版本）
++ cudnn 7.1.4 （版本与cudatoolkit9.0对应的，其他版本请去NVIDIA官网查看对应的cudatoolkit版本）
 + keras 2.2.2
 + matplotlib 2.2.2 
 
+可以通过控制台在根目录路径下输入：`pip install -r requirements.txt`安装上述所有包（注意查看cudatoolkit和cudnn版本须与电脑的GPU型号对应）。
 ### 使用django自带的服务器在本地运行
 首先你需要将此项目clone或者download到本地。然后在控制台，进入项目根目录即WebStockPredict(包含有manage.py的目录)，输入如下面命令，启动Web应用：
 
@@ -44,16 +45,25 @@ Quit the server with CTRL-BREAK.
 此时在浏览器中输入：`http://http://127.0.0.1:8000/stock_predict/home/`即可访问应用，通过下拉框选择查看某个公司过去20天的历史股票数据和未来10天的预测数据。
 ![home page](/display_img/home.png "股票预测系统首页")
 
+**注：在Web app中绘制的10天预测数据，大多都是朝着一个方向变化。这是因为股票数据是一个随机过程，无法使用既有的模型去准确预测未来一段时间的数据，只能给出股票未来变化的趋势。
+在我们使用[jaungiers](https://www.altumintelligence.com/articles/a/Time-Series-Prediction-Using-LSTM-Deep-Neural-Networks)提出的模型中他详细阐述了这个问题。
+我们预测输出符合他给出的实验图，如下：**
+![multi-sequence](/display_img/multi-sequence.png "多段预测输出")
+
 ## 数据
 本项目为了演示方便，只使用了10个公司的股票数据来进行模型训练，实际上可以依据个人需求，训练成百上千个公司的数据。
 *注：这个项目只是用来演示，并不保证预测的真实性，请勿用于真实炒股*
 
 ### 数据来源
-获取国内上市公司历史股票数据来源于网易的API：'http://quotes.money.163.com/service/chddata.html'，
+#### 训练数据
+训练模型的数据，即10个公司的历史股票数据。获取国内上市公司历史股票数据来源于网易的API：'http://quotes.money.163.com/service/chddata.html'，
 详细使用请参考[数据接口-免费版（股票数据API）](https://blog.csdn.net/llingmiao/article/details/79941066)。
 在LSTMPredictStock/core/get_domestic_hist_stock.py 中`get_domestic_stock(sticker_code, start_date, end_date):`
 函数用于获取10个公司起始至终止日期的股票数据，并以csv格式保存在 LSTMPredictStock/data下。csv格式方便用pandas读取，输入到LSTM神经网络模型，
 用于训练模型以及预测股票数据。
+#### 股票指标数据
+
+
 
 ### 训练模型
 1. 调用run.py中的`train_all_stock`，它首先会调用`get_all_last_data(start_date="2010-01-01")`方法获得10个公司从2010年至今年的历史数据
@@ -62,7 +72,7 @@ Quit the server with CTRL-BREAK.
 3. 并分别将10个公司的训练好的模型保存于LSTMPredictStock/saved_models下（'xxx.h5'格式），用于后续恢复模型来预测数据
 
 ### 预测股票数据
-1. 调用run.py中的`predict_all_stock(pre_len=10)`来对10个公司的股票进行预测，pre_len指定预测的天数，默认是10天。
+1. 调用run.py中的`predict_all_stock(pre_len=10)`来对10个公司的股票进行预测，pre_len指定预测的天数，默认是10天
 2. 上一步调用的函数实际上调用了`prediction(stock_code, real=True, pre_len=30, plot=False)`来完成预测。
 在` model.load_model(file_path)`这里恢复了模型。它默认使用每个公司近30天的历史数据作为模型输入来得到pre_len天的预测数据
 
@@ -70,7 +80,7 @@ Quit the server with CTRL-BREAK.
 ### 项目测试
 #### 单元测试
 使用django自带的测试工具来实现单元测试，测试程序位于stock_predict/test.py，在控制台根目录下使用命令`python manage.py test stock_predict'
-来运行test.py
+来运行test.py。
 #### 集成测试
 如果想完成集成测试，则需要借助第三方库：coverage.py，可以通过`pip install coverage`安装，详情使用参考[coverage.py](https://pypi.org/project/coverage/)。
 1. 控制台在根目录WebStockPredict下，输入命令`coverage run --source='.' manage.py test stock_predict`来执行test.py
