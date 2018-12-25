@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2994abc8-5baf-4237-83a4-d45792092108" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/display_img/data_cat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/display_img/multi-sequence.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/display_img/cookie.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +35,7 @@
           <entry key="html" value="3" />
           <entry key="js" value="2" />
           <entry key="md" value="4" />
-          <entry key="py" value="40" />
+          <entry key="py" value="41" />
           <entry key="sqlite3" value="1" />
           <entry key="txt" value="2" />
         </counts>
@@ -48,7 +46,7 @@
           <entry key="JavaScript" value="2" />
           <entry key="Markdown" value="4" />
           <entry key="PLAIN_TEXT" value="12" />
-          <entry key="Python" value="40" />
+          <entry key="Python" value="41" />
           <entry key="SQL" value="1" />
         </counts>
       </usages-collector>
@@ -57,7 +55,7 @@
           <entry key="Python Console" value="640" />
           <entry key="html" value="260" />
           <entry key="js" value="779" />
-          <entry key="md" value="3872" />
+          <entry key="md" value="4342" />
           <entry key="py" value="6572" />
           <entry key="txt" value="13" />
         </counts>
@@ -66,7 +64,7 @@
         <counts>
           <entry key="HTML" value="260" />
           <entry key="JavaScript" value="779" />
-          <entry key="Markdown" value="3872" />
+          <entry key="Markdown" value="4342" />
           <entry key="PLAIN_TEXT" value="13" />
           <entry key="Python" value="7212" />
         </counts>
@@ -79,10 +77,22 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="192">
-                <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+              <first_editor relative-caret-position="379">
+                <caret line="78" selection-start-line="78" selection-end-line="78" />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stock_predict/get_stock_index.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="22" column="74" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="74" />
+              <folding>
+                <element signature="e#83#98#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -209,6 +219,12 @@
               <item name="WebStockPredict" type="462c0819:PsiDirectoryNode" />
               <item name="stock_predict" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="WebStockPredict" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WebStockPredict" type="462c0819:PsiDirectoryNode" />
+              <item name="stock_predict" type="462c0819:PsiDirectoryNode" />
+              <item name="stock_index" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -333,7 +349,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32907802" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32907802" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4993395" visible="true" weight="0.24539007" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4993395" visible="true" weight="0.18723404" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5006605" side_tool="true" weight="0.27659574" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.5078014" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -479,13 +495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stock_predict/get_stock_index.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-671">
-          <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stock_predict/apps.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -538,11 +547,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/stock_predict/get_stock_index.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="74" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="74" />
+          <folding>
+            <element signature="e#83#98#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="192">
-            <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+          <first_editor relative-caret-position="379">
+            <caret line="78" selection-start-line="78" selection-end-line="78" />
           </first_editor>
           <second_editor />
         </state>

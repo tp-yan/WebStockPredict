@@ -27,7 +27,7 @@
 + keras 2.2.2
 + matplotlib 2.2.2 
 
-可以通过控制台在根目录路径下输入：`pip install -r requirements.txt`安装上述所有包（注意查看cudatoolkit和cudnn版本须与电脑的GPU型号对应）。
+可以通过控制台在根目录路径下输入：`pip install -r requirements.txt`安装上述所有包（注意修改cudatoolkit和cudnn的版本与自己电脑的GPU型号一致）。
 ### 使用django自带的服务器在本地运行
 首先你需要将此项目clone或者download到本地。然后在控制台，进入项目根目录即WebStockPredict(包含有manage.py的目录)，输入如下面命令，启动Web应用：
 
@@ -55,15 +55,28 @@ Quit the server with CTRL-BREAK.
 *注：这个项目只是用来演示，并不保证预测的真实性，请勿用于真实炒股*
 
 ### 数据来源
-#### 训练数据
++ #### 训练数据
 训练模型的数据，即10个公司的历史股票数据。获取国内上市公司历史股票数据来源于网易的API：'http://quotes.money.163.com/service/chddata.html'，
 详细使用请参考[数据接口-免费版（股票数据API）](https://blog.csdn.net/llingmiao/article/details/79941066)。
 在LSTMPredictStock/core/get_domestic_hist_stock.py 中`get_domestic_stock(sticker_code, start_date, end_date):`
 函数用于获取10个公司起始至终止日期的股票数据，并以csv格式保存在 LSTMPredictStock/data下。csv格式方便用pandas读取，输入到LSTM神经网络模型，
 用于训练模型以及预测股票数据。
-#### 股票指标数据
++ #### 股票指标数据
+我们的Web app，还给出了每个公司的股票评价指标。这些数据是从[数据猫](http://www.gpdatacat.com/)的网站上爬取的，在数据猫的网站上给出了股票的很多项评价指标（如下图），
+而我们只选择了其中几个评价指标来展示。爬虫程序：stock_predict/get_stock_index.py，调用`main(stockcode)`方法可以获得指定股票代码的评价指标数据，
+它会在stock_predict下创建stock_index文件夹，以csv格式保存爬取的数据。另外，需要注意的是，因为数据猫需要用户登录以后才能查看相应的股票数据，所以在
+运行get_stock_index.py时，需要自己先在浏览器登录数据猫后，得到cookie中的参数（按F12，选择Application选项卡即可看到，如下图），
+然后在get_stock_index.py中修改下面代码块中对应的字符串变量‘+’后面的值
 
-
+![cookie](/display_img/cookie.png "获取cookie参数")
+```
+UM_distinctid = "UM_distinctid=" + "167d4244a665d3-0bc7b9a22f42f1-4313362-144000-167d4244a67440;"
+PHPSESSID = "PHPSESSID=" + "4j67ed7bo6ogs6ntjmo3fb62n4;"
+CNZZDATA1256448133 = "CNZZDATA1256448133=" + "1846506456-1545449269-%7C1545479258;"
+amvid = "amvid=" + "6447ffafff063060f1a560d94128a33f"
+cookie={'Cookie':UM_distinctid+PHPSESSID+CNZZDATA1256448133+amvid}
+```
+![data_cat](/display_img/data_cat.png "股票评价指标")
 
 ### 训练模型
 1. 调用run.py中的`train_all_stock`，它首先会调用`get_all_last_data(start_date="2010-01-01")`方法获得10个公司从2010年至今年的历史数据
