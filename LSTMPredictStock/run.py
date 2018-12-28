@@ -102,7 +102,6 @@ def train_model(stock_code, predict=False):  # 训练指定股票代码的模型
         print("训练：\n", predictions)
         # plot_results_multiple(predictions, y_test, configs['data']['sequence_length'])
 
-
 # 对指定公司的股票进行预测
 def prediction(stock_code, real=True, pre_len=30, plot=False):
     '''
@@ -157,7 +156,7 @@ def prediction(stock_code, real=True, pre_len=30, plot=False):
     predictions_array = base * (1 + predictions_array)
     predictions = predictions_array.tolist()
 
-    # print("预测数据:\n", predictions)
+    print("预测数据:\n", predictions)
     if not real:
         print("真实数据：\n", y_test_real)
 
@@ -223,6 +222,7 @@ def train_all_stock():  #
     get_all_last_data(start_date="2010-01-01")
     configs = json.load(open(get_config_path(), 'r'))
     companies = configs['companies']
+
     for stock_code in companies.keys():
         train_model(stock_code)
 
@@ -255,5 +255,6 @@ def get_parent_dir():   # 当前文件的父目录绝对路径
 
 
 if __name__ == '__main__':
-    train_all_stock()
+    # train_all_stock()
     predict_all_stock()
+    # train_model("000063", predict=False)

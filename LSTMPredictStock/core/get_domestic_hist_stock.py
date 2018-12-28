@@ -9,7 +9,7 @@ def get_domestic_stock(sticker_code, start_date, end_date):
     api_adr = 'http://quotes.money.163.com/service/chddata.html'
     fields = "TOPEN;TCLOSE;HIGH;LOW;VOTURNOVER"
     # 注意：获取上海证券与深圳证券股票的数据，需要构造不同的URL
-    tag = "0"   # 上海证券
+    tag = "0"       # 上海证券
     if sticker_code in ['000063','000066','000768','000651']:
         tag = "1"   # 深圳证券
 
@@ -27,6 +27,7 @@ def get_domestic_stock(sticker_code, start_date, end_date):
     root = os.path.dirname(os.path.dirname(__file__))
     dir_path = os.path.join(root,"data")
     filename = sticker_code + ".csv"
+    print(os.path.join(dir_path,filename))
     with open(os.path.join(dir_path,filename), "w+", encoding='utf-8') as f:
         for line in txt_list:
             if line.split(',')[3] != '0.0':     # 去除无效数据

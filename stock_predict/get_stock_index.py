@@ -17,9 +17,9 @@ def getHTMLText(url):
         #账号密码15520452757
         #cookie={'Cookie':'UM_ distinctid= ;PHPSESSID=;CNZZDATA1256448133=; amvid = '}
         UM_distinctid = "UM_distinctid=" + "167d4244a665d3-0bc7b9a22f42f1-4313362-144000-167d4244a67440;"
-        PHPSESSID = "PHPSESSID=" + "4j67ed7bo6ogs6ntjmo3fb62n4;"
-        CNZZDATA1256448133 = "CNZZDATA1256448133=" + "1846506456-1545449269-%7C1545479258;"
-        amvid = "amvid=" + "6447ffafff063060f1a560d94128a33f"
+        PHPSESSID = "PHPSESSID=" + "3n5tijoru3ac300d06aj1o3ku7;"
+        CNZZDATA1256448133 = "CNZZDATA1256448133=" + "1846506456-1545449269-%7C1545966443;"
+        amvid = "amvid=" + "36ea17e34bc1f734cf970e49063d73a6"
         cookie={'Cookie':UM_distinctid+PHPSESSID+CNZZDATA1256448133+amvid}
         r = requests.get(url, headers=cookie, timeout = 30)
         r.raise_for_status()
