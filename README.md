@@ -16,18 +16,19 @@
 ### 环境要求
 如果只运行web项目，则只需安装如下包：
 + python 3.6.x
-+ django 2.1.4
-+ pandas 0.23.4
-+ numpy 1.15.2
++ django >= 2.1.4 （或者使用conda安装最新版）
++ pandas >= 0.23.4 （或者使用conda安装最新版）
++ numpy >= 1.15.2 （或者使用conda安装最新版）
++ apscheduler = 2.1.2 （请用pip install apscheduler==2.1.2 安装，conda装的版本不兼容）
 
 如果需要训练模型或者使用模型来预测(注：需要保证本机拥有 NVIDIA GPU以及显卡驱动)，则还需要安装：
-+ tensorflow-gpu 1.10.0
-+ cudatoolkit 9.0 （根据自己本机的显卡型号决定，请去NVIDIA官网查看）
-+ cudnn 7.1.4 （版本与cudatoolkit9.0对应的，其他版本请去NVIDIA官网查看对应的cudatoolkit版本）
-+ keras 2.2.2
-+ matplotlib 2.2.2 
++ tensorflow-gpu >= 1.10.0 （可以使用conda安装最新版。如用conda安装，cudatoolkit和cudnn会被自动安装）
++ cudatoolkit >= 9.0 （根据自己本机的显卡型号决定，请去NVIDIA官网查看）
++ cudnn >= 7.1.4 （版本与cudatoolkit9.0对应的，其他版本请去NVIDIA官网查看对应的cudatoolkit版本）
++ keras >= 2.2.2 （可以使用conda安装最新版）
++ matplotlib >=  2.2.2  （可以使用conda安装最新版）
 
-可以通过控制台在根目录路径下输入：`pip install -r requirements.txt`安装上述所有包（注意修改cudatoolkit和cudnn的版本与自己电脑的GPU型号一致）。
+或者可以通过控制台在根目录路径下输入：`pip install -r requirements.txt`安装上述所有包（注意修改cudatoolkit和cudnn的版本与自己电脑的GPU型号一致）。
 ### 使用django自带的服务器在本地运行
 首先你需要将此项目clone或者download到本地。然后在控制台，进入项目根目录即WebStockPredict(包含有manage.py的目录)，输入如下面命令，启动Web应用：
 
